@@ -1,4 +1,5 @@
 global.__base = __dirname + '/';
+const PORT = 8000;
 
 var express = require('express');
 var path = require('path');
@@ -43,3 +44,6 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+
+app.listen(PORT);
+console.log("Listening on port " + PORT)
