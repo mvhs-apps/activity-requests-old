@@ -31,6 +31,9 @@
         padding: 0px;
         margin: 0px;
     }
+    .mdl-textfield__input {
+        color: #f9f907;
+    }
 
 </style>
 
@@ -112,12 +115,12 @@
         <div>
             <h5 class="formLabel" style="display: inline-block;">Is this event on campus?</h5>
             <div id="infoWindowCampus" style="display: inline-block; margin-left: 50px">
-                <img src="img/info2.png" style="display: inline-block;" onmouseover='addInfoWindow("infoWindowCampus")' onmouseout='removeInfoWindow("infoWindowCampus")' width="20px" />
+                <img src="img/info2.png" style="display: inline-block;" onmouseover='addInfoWindow("infoWindowCampus", "On the MVHS Campus")' onmouseout='removeInfoWindow("infoWindowCampus")' width="20px" />
             </div>
             <br>
             <div class="mdl-textfield mdl-js-textfield">
                 <div class="mdc-radio" style="display: inline-block;">
-                  <input class="mdc-radio__native-control" type="radio" id="onCampusRadio" name="radios" checked>
+                  <input class="mdc-radio__native-control" type="radio" id="onCampusRadio" value="onCampusRadio" name="campusRadio" checked>
                   <div class="mdc-radio__background">
                     <div class="mdc-radio__outer-circle"></div>
                     <div class="mdc-radio__inner-circle"></div>
@@ -126,7 +129,7 @@
                 <label id="onCampusRadio-label" for="onCampusRadio">Yes</label>
 
                 <div class="mdc-radio" style="display: inline-block; padding-left: 20px">
-                  <input class="mdc-radio__native-control" type="radio" id="offCampusRadio" name="radios">
+                  <input class="mdc-radio__native-control" type="radio" id="offCampusRadio" value="offCampusRadio" name="campusRadio">
                   <div class="mdc-radio__background">
                     <div class="mdc-radio__outer-circle"></div>
                     <div class="mdc-radio__inner-circle"></div>
@@ -140,7 +143,7 @@
             <h5 class="formLabel">Is this a donation drive or a fundraiser?</h5>
             <div class="mdl-textfield mdl-js-textfield">
                 <div class="mdc-radio" style="display: inline-block;">
-                  <input class="mdc-radio__native-control" type="radio" id="donationRadio" name="radios" checked>
+                  <input class="mdc-radio__native-control" type="radio" id="donationRadio" name="donationRadio" value="donationRadio" checked>
                   <div class="mdc-radio__background">
                     <div class="mdc-radio__outer-circle"></div>
                     <div class="mdc-radio__inner-circle"></div>
@@ -149,7 +152,7 @@
                 <label id="donationRadio-label" for="donationRadio">Donation Drive</label>
 
                 <div class="mdc-radio" style="display: inline-block; padding-left: 20px">
-                  <input class="mdc-radio__native-control" type="radio" id="fundraiserRadio" name="radios">
+                  <input class="mdc-radio__native-control" type="radio" id="fundraiserRadio" value="fundraiserRadio" name="donationRadio">
                   <div class="mdc-radio__background">
                     <div class="mdc-radio__outer-circle"></div>
                     <div class="mdc-radio__inner-circle"></div>
@@ -165,14 +168,33 @@
 </form>
 <script type="text/javascript">
 
-    function addInfoWindow(parentId) {
-        $("#" + parentId).append('<div style="display:inline-block" id="infoWindow"><p>asdf</p></div>')
+    function addInfoWindow(parentId, text) {
+        $("#" + parentId).append('<div style="display:inline-block; width:300px; background-color: #d8d8d8; margin-bottom:-20px; border-radius: 5px; padding-left: 10px" id="infoWindow"><p>' + text + '</p></div>')
     }
     function removeInfoWindow(parentId) {
         $("#infoWindow").remove()
     }
   $(document).ready(function() {
     $('#nav').localScroll({duration: 800});
+
+    $('input[type=radio][name=donationRadio]').change(function() {
+        if(this.value == 'fundraiserRadio') {
+            alert("asdf");
+        }
+        if(this.value == 'donationRadio') {
+            alert("asdf");
+        }
+    });
+
+    $('input[type=radio][name=campusRadio]').change(function() {
+        if(this.value == 'onCampusRadio') {
+            alert("asdf");
+        }
+        if(this.value == 'offCampusRadio') {
+            alert("asdf");
+        }
+    });
+
   });
 </script>
 </body>
