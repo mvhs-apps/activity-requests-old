@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Roboto|Material+Icons">
+		<link rel="stylesheet" type="text/css" href="/stylesheets/new.css">
+		<meta content="width=device-width, initial-scale=1" name="viewport">
+
+		<title>New Approval</title>
+
+	</head>
+	<body>
+		<div id="navigation">
+			<div style="padding: 10px;">
+				<img src="/img/logo.png" height="50" width="94" style="margin-left: 50px;">						
+			</div>
+		</div>
+		<div style="background-color: rgb(216, 216, 216); padding: 20px;">
+			<h1 style="text-align: center">Welcome to Mountain View High School Approvals</h1>
+			<div style="background: white; margin-top: 50px; padding: 70px;">
+				<h1 style="color: #373a3c; text-align: center; margin-bottom: 20px;">Fundraising Form</h1>
+				<p style="color: red;">This form does not mean your activity is approved. Your application will need to be approved by your club adviser, ASB, etc.</p>
+				<div id="main-form-part">
+					<div class="input-area">
+						<div class="text-input">
+							<span class="input-title">Your Name</span>
+							<input type="text" name="name" placeholder="First and last">
+							<span class="feedback">First and last name please!</span>			
+						</div>
+					</div>
+					<div class="input-area">
+						<div class="text-input">
+							<span class="input-title">Club Name</span>
+							<input type="text" name="name" placeholder="MVLA email">
+							<span class="feedback"></span>			
+						</div>
+					</div>
+					<div class="input-area">
+						<div class="text-input">
+							<span class="input-title">Your Email</span>
+							<input type="text" name="name" placeholder="MVLA email">
+							<span class="feedback">Please enter a valid MVLA email</span>			
+						</div>
+					</div>
+					<div class="input-area">
+						<div class="text-input">
+							<span class="input-title">Club Advisor Email</span>
+							<input type="text" name="name" placeholder="MVLA email">
+							<span class="feedback">Please enter a valid MVLA email</span>			
+						</div>
+					</div>
+					<div class="input-area">
+						<div class="select-input">
+							<span class="input-title">Is the event on campus?</span>
+							<div>
+								<p class="hoverable"><i class="material-icons">help</i></p>
+								<div>Will this event take place on MVHS campus?</div>
+							</div>
+							<select>
+								<option selected disabled>Select one</option>
+								<option value="1">Yes</option>
+								<option value="0">No</option>
+							</select>		
+						</div>
+					</div>
+					<div class="input-area">
+						<div class="select-input">
+							<span class="input-title">Type of event</span>
+							<select onchange="fundOrDonationShow(this.value)">
+								<option selected disabled>Select one</option>
+								<option value="fundraiser">Fundraiser</option>
+								<option value="donation-drive">Donation Drive</option>
+							</select>		
+						</div>
+					</div>
+				</div>
+				<div id="donation-form-part" style="display: none;">
+					<div class="input-area">
+						<div class="text-input">
+							<span class="input-title">Donation form questions go here</span>
+							<input type="text" name="name" placeholder="First and last">
+							<span class="feedback">First and last name please!</span>			
+						</div>
+					</div>
+					<div class="input-area">
+						<div class="text-input">
+							<span class="input-title">Club Name</span>
+							<input type="text" name="name" placeholder="MVLA email">
+							<span class="feedback"></span>			
+						</div>
+					</div>
+					<div class="input-area">
+						<div class="text-input">
+							<span class="input-title">Your Email</span>
+							<input type="text" name="name" placeholder="MVLA email">
+							<span class="feedback">Please enter a valid MVLA email</span>			
+						</div>
+					</div>
+					<div class="input-area">
+						<div class="text-input">
+							<span class="input-title">Club Advisor Email</span>
+							<input type="text" name="name" placeholder="MVLA email">
+							<span class="feedback">Please enter a valid MVLA email</span>			
+						</div>
+					</div>
+					<div class="input-area">
+						<div class="select-input">
+							<span class="input-title">Is the event on campus?</span>
+							<div>
+								<p class="hoverable"><i class="material-icons">help</i></p>
+								<div>Will this event take place on MVHS campus?</div>
+							</div>
+							<select>
+								<option selected disabled>Select one</option>
+								<option value="1">Yes</option>
+								<option value="0">No</option>
+							</select>		
+						</div>
+					</div>
+				</div>
+				<div id="fundraiser-form-part" style="display: none;">
+					<div class="input-area">
+						<div class="text-input">
+							<span class="input-title">Fundraiser questions go here</span>
+							<input type="text" name="name" placeholder="First and last">
+							<span class="feedback">First and last name please!</span>			
+						</div>
+					</div>
+					<div class="input-area">
+						<div class="text-input">
+							<span class="input-title">Club Name</span>
+							<input type="text" name="name" placeholder="MVLA email">
+							<span class="feedback"></span>			
+						</div>
+					</div>
+					<div class="input-area">
+						<div class="text-input">
+							<span class="input-title">Your Email</span>
+							<input type="text" name="name" placeholder="MVLA email">
+							<span class="feedback">Please enter a valid MVLA email</span>			
+						</div>
+					</div>
+					<div class="input-area">
+						<div class="text-input">
+							<span class="input-title">Club Advisor Email</span>
+							<input type="text" name="name" placeholder="MVLA email">
+							<span class="feedback">Please enter a valid MVLA email</span>			
+						</div>
+					</div>
+					<div class="input-area">
+						<div class="select-input">
+							<span class="input-title">Is the event on campus?</span>
+							<div>
+								<p class="hoverable"><i class="material-icons">help</i></p>
+								<div>Will this event take place on MVHS campus?</div>
+							</div>
+							<select>
+								<option selected disabled>Select one</option>
+								<option value="1">Yes</option>
+								<option value="0">No</option>
+							</select>		
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="/js/new.js"></script>
+	</body>
+</html>
