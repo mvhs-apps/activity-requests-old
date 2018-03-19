@@ -24,29 +24,29 @@
 					<div class="input-area">
 						<div class="text-input">
 							<span class="input-title">Your Name</span>
-							<input type="text" name="name" placeholder="First and last">
-							<span class="feedback">First and last name please!</span>			
+							<input type="text" name="name" onkeyup="validateFullName(this)" onblur="validateFullName(this)" placeholder="First and last">
+							<span class="feedback" style="color: #d50000;">First and last name please!</span>			
 						</div>
 					</div>
 					<div class="input-area">
 						<div class="text-input">
 							<span class="input-title">Club Name</span>
-							<input type="text" name="name" placeholder="MVLA email">
+							<input type="text" name="name" onkeyup="this.value = capitalizeEachWordInStr(this.value)" onblur="this.value = capitalizeEachWordInStr(this.value)" placeholder="MVLA email">
 							<span class="feedback"></span>			
 						</div>
 					</div>
 					<div class="input-area">
 						<div class="text-input">
 							<span class="input-title">Your Email</span>
-							<input type="text" name="name" placeholder="MVLA email">
-							<span class="feedback">Please enter a valid MVLA email</span>			
+							<input type="text" name="name" onkeyup="validateEmail(this, '@mvla.net')" onblur="validateEmail(this, '@mvla.net')" placeholder="MVLA email">
+							<span class="feedback" style="color: #d50000;">Please enter a valid MVLA email</span>			
 						</div>
 					</div>
 					<div class="input-area">
 						<div class="text-input">
 							<span class="input-title">Club Advisor Email</span>
-							<input type="text" name="name" placeholder="MVLA email">
-							<span class="feedback">Please enter a valid MVLA email</span>			
+							<input type="text" name="name" onkeyup="validateEmail(this, '@mvla.net')" onblur="validateEmail(this, '@mvla.net')" placeholder="MVLA email">
+							<span class="feedback" style="color: #d50000;">Please enter a valid MVLA email</span>			
 						</div>
 					</div>
 					<div class="input-area">
