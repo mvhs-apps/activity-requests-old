@@ -21,6 +21,10 @@ var fundraiserShow = function(value) {
     typeOfForm = value;
   } else if (value === 'noFundraiser') {
     fundrasierFormPart.style.display = 'none';
+    restaurantFormPart.style.display = 'none';
+    donationDriveFormPart.style.display = 'none';
+    foodSalesFormPart.style.display = 'none';
+    productFormPart.style.display = 'none';
     typeOfForm = value;
   } else {
     fundrasierFormPart.style.display = 'none';

@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 global.__base = __dirname + '/';
-const PORT = 8000;
+const PORT = process.env.PORT;
 
 let express = require('express');
 let path = require('path');
@@ -26,7 +26,7 @@ app.use(cookieParser());
 app.use(express.static('public'));
 // app.use('/public', express.static(__base + 'public'));
 
-app.use('/', require('./routes/index'));
+app.use('/', require('./router'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
