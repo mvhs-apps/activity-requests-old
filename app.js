@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 global.__base = __dirname + '/';
-const PORT = 8000;
+const PORT = process.env.PORT;
 
 let express = require('express');
 let path = require('path');
