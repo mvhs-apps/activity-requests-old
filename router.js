@@ -9,6 +9,11 @@ router.get('/new', (req, res) => {
   res.render('new');
 });
 
+router.post('/email', (req, res) => {
+  console.log('sending');
+  sendEmail('marc.bacvanski@gmail.com', 'confirmation', 'abcdefgh');
+});
+
 let sendEmail = (email, type, id) => {
   if (email && type && id) {
     let emailValidator = require('email-validator');
