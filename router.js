@@ -5,14 +5,16 @@ router.get('/', (req, res) => {
   res.render('index');
 });
 
-router.get('/new', (req, res) => {
-  res.render('new');
+router.get('/form', (req, res) => {
+  res.render('form');
 });
 
 router.post('/email', (req, res) => {
   console.log('sending');
   sendEmail('marc.bacvanski@gmail.com', 'confirmation', 'abcdefgh');
 });
+
+router.post('/')
 
 let sendEmail = (email, type, id) => {
   if (email && type && id) {
