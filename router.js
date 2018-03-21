@@ -9,6 +9,10 @@ router.get('/form', (req, res) => {
   res.render('form');
 });
 
+router.get('/track', (req, res) => {
+  res.render('track');
+});
+
 router.post('/email', (req, res) => {
   console.log('sending');
   sendEmail('marc.bacvanski@gmail.com', 'confirmation', 'abcdefgh');
