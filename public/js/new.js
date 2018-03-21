@@ -3,8 +3,11 @@
 var mainFormPart = document.getElementById('main-form-part');
 var fundrasierFormPart = document.getElementById('fundraiser-form-part');
 var donationFormPart = document.getElementById('donation-form-part');
+var onCampusFormPart = document.getElementById('onCampus-form-part');
+var offCampusFormPart = document.getElementById('offCampus-form-part');
 const emailRegEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 var typeOfForm;
+var onOrOffCampusValue;
 
 var insertNodeAfter = function(referenceNode, newNode) {
 	referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
@@ -23,6 +26,49 @@ var fundOrDonationShow = function(value) {
 	} else {
 		fundrasierFormPart.style.display = 'none';
 		donationFormPart.style.display = 'none';
+	}
+}
+
+var onOrOffCampus = function(value) {
+	if (value === 'onCampus') {
+		onCampusFormPart.style.display = 'block';
+		offCampusFormPart.style.display = 'none';
+		onOrOffCampusValue = value;
+	} else if (value === 'offCampus') {
+		offCampusFormPart.style.display = 'block';
+		onCampusFormPart.style.display = 'none';
+		onOrOffCampusValue = value;
+	} else {
+		onCampusFormPart.style.display = 'none';
+		offCampusFormPart.style.display = 'none';
+	}
+}
+
+var selectedFacility = function() {
+	if(document.getElementById('smallGymFacility').checked) {
+		document.getElementById('smallGymRequest').style.display = 'inline-block';
+	} else {
+		document.getElementById('smallGymRequest').style.display = 'none';
+	}
+	if(document.getElementById('largeGymFacility').checked) {
+		document.getElementById('largeGymRequest').style.display = 'inline-block';
+	} else {
+		document.getElementById('largeGymRequest').style.display = 'none';
+	}
+	if(document.getElementById('libraryFacility').checked) {
+		document.getElementById('libraryRequest').style.display = 'inline-block';
+	} else {
+		document.getElementById('libraryRequest').style.display = 'none';
+	}
+	if(document.getElementById('cafeteriaFacility').checked) {
+		document.getElementById('cafeteriaRequest').style.display = 'inline-block';
+	} else {
+		document.getElementById('cafeteriaRequest').style.display = 'none';
+	}
+	if(document.getElementById('classroomsFacility').checked) {
+		document.getElementById('classroomsRequest').style.display = 'inline-block';
+	} else {
+		document.getElementById('classroomsRequest').style.display = 'none';
 	}
 }
 

@@ -25,16 +25,9 @@
 					<p class="form-section-title">General Questions</p>
 					<div class="input-area">
 						<div class="text-input">
-							<span class="input-title">Your Name</span>
+							<span class="input-title">Name</span>
 							<input type="text" name="name" onkeyup="validateFullName(this)" onblur="validateFullName(this)" placeholder="First and last">
 							<span class="feedback">First and last name please!</span>			
-						</div>
-					</div>
-					<div class="input-area">
-						<div class="text-input">
-							<span class="input-title">Club Name</span>
-							<input type="text" name="name" onkeyup="this.value = capitalizeEachWordInStr(this.value)" onblur="this.value = capitalizeEachWordInStr(this.value)" placeholder="Type here">
-							<span class="feedback"></span>			
 						</div>
 					</div>
 					<div class="input-area">
@@ -46,6 +39,13 @@
 					</div>
 					<div class="input-area">
 						<div class="text-input">
+							<span class="input-title">Club/Organization Name</span>
+							<input type="text" name="name" onkeyup="this.value = capitalizeEachWordInStr(this.value)" onblur="this.value = capitalizeEachWordInStr(this.value)" placeholder="Type here">
+							<span class="feedback"></span>			
+						</div>
+					</div>
+					<div class="input-area">
+						<div class="text-input">
 							<span class="input-title">Club Advisor Email</span>
 							<input type="text" name="name" onkeyup="validateEmail(this, '@mvla.net')" onblur="validateEmail(this, '@mvla.net')" placeholder="MVLA email">
 							<span class="feedback">Please enter a valid MVLA email</span>			
@@ -53,25 +53,100 @@
 					</div>
 					<div class="input-area">
 						<div class="select-input">
-							<span class="input-title">Is the event on campus?</span>
+							<span class="input-title">Is this event on or off campus?</span>
 							<div>
 								<p class="hoverable"><i class="material-icons" style="font-size: 24px;">help</i></p>
 								<div>Will this event take place on MVHS campus?</div>
 							</div>
-							<select>
+							<select onchange="onOrOffCampus(this.value)">
 								<option selected disabled>Select one</option>
-								<option value="1">Yes</option>
-								<option value="0">No</option>
+								<option value="onCampus">On Campus</option>
+								<option value="offCampus">Off Campus</option>
 							</select>		
+						</div>
+					</div>
+					<div id="onCampus-form-part" style="display: none;">
+						<p class="form-section-title">On Campus Questions</p>
+						<div class="input-area">
+							<div class="checkbox-input">
+								<span class="input-title">Please select any desired facilities</span>
+								<br>
+								<input type="checkbox" id="smallGymFacility" name="smallGymFacility" class="checkboxQuestion" onclick="selectedFacility();">
+    							<label for="smallGymFacility" class="checkboxLabel">Small Gym</label>
+    							<button class="requestApproval" id="smallGymRequest">Request Approval</button>
+    							<br>
+    							<input type="checkbox" id="largeGymFacility" name="largeGymFacility" class="checkboxQuestion" onclick="selectedFacility();">
+    							<label for="largeGymFacility" class="checkboxLabel">Large Gym</label>
+    							<button class="requestApproval" id="largeGymRequest">Request Approval</button>
+    							<br>
+    							<input type="checkbox" id="libraryFacility" name="libraryFacility" class="checkboxQuestion" onclick="selectedFacility();">
+    							<label for="libraryFacility" class="checkboxLabel">Library</label>
+    							<button class="requestApproval" id="libraryRequest">Request Approval</button>
+    							<br>
+    							<input type="checkbox" id="theaterFacility" name="theaterFacility" class="checkboxQuestion" onclick="selectedFacility();">
+    							<label for="theaterFacility" class="checkboxLabel">Theater</label>
+    							<br>
+    							<input type="checkbox" id="footballFieldFacility" name="footballFieldFacility" class="checkboxQuestion" onclick="selectedFacility();">
+    							<label for="footballFieldFacility" class="checkboxLabel">Football Field</label>
+    							<br>
+    							<input type="checkbox" id="grassFieldsGymFacility" name="grassFieldsGymFacility" class="checkboxQuestion" onclick="selectedFacility();">
+    							<label for="grassFieldsGymFacility" class="checkboxLabel">Grass Fields</label>
+    							<br>
+    							<input type="checkbox" id="cafeteriaFacility" name="cafeteriaFacility" class="checkboxQuestion" onclick="selectedFacility();">
+    							<label for="cafeteriaFacility" class="checkboxLabel">Cafeteria</label>
+    							<button class="requestApproval" id="cafeteriaRequest">Request Approval</button>
+    							<br>
+    							<input type="checkbox" id="classroomsFacility" name="classroomsFacility" class="checkboxQuestion" onclick="selectedFacility();">
+    							<label for="classroomsFacility" class="checkboxLabel">Classrooms</label>
+    							<button class="requestApproval" id="classroomsRequest">Request Approval</button>
+    							<br>
+    							<input type="checkbox" id="mainQuadFacility" name="mainQuadFacility" class="checkboxQuestion" onclick="selectedFacility();">
+    							<label for="mainQuadFacility" class="checkboxLabel">Main Quad</label>
+    							<br>
+    							<input type="checkbox" id="scienceQuadFacility" name="scienceQuadFacility" class="checkboxQuestion" onclick="selectedFacility();">
+    							<label for="scienceQuadFacility" class="checkboxLabel">Science Quad</label>
+							</div>
+						</div>
+						<div class="checkbox-input">
+								<span class="input-title">Please select all desired equipment</span>
+								<br>
+								<input type="checkbox" id="tablesEquipment" name="tablesEquipment" class="checkboxQuestion" onclick="selectedEquipment();">
+    							<label for="tablesEquipment" class="checkboxLabel">Tables</label>
+    							<br>
+    							<input type="checkbox" id="chairsEquipment" name="chairsEquipment" class="checkboxQuestion" onclick="selectedEquipment();">
+    							<label for="chairsEquipment" class="checkboxLabel">Chairs</label>
+    							<br>
+    							<input type="checkbox" id="soundSystemEquipment" name="soundSystemEquipment" class="checkboxQuestion" onclick="selectedEquipment();">
+    							<label for="soundSystemEquipment" class="checkboxLabel">Sound System</label>
+    							<br>
+    							<input type="checkbox" id="screenEquipment" name="screenEquipment" class="checkboxQuestion" onclick="selectedEquipment();">
+    							<label for="screenEquipment" class="checkboxLabel">Screen</label>
+    							<br>
+    							<input type="checkbox" id="projectorEquipment" name="projectorEquipment" class="checkboxQuestion" onclick="selectedEquipment();">
+    							<label for="projectorEquipment" class="checkboxLabel">Projector</label>
+    							<br>
+    							<input type="checkbox" id="cashboxEquipment" name="cashboxEquipment" class="checkboxQuestion" onclick="selectedEquipment();">
+    							<label for="cashboxEquipment" class="checkboxLabel">Cashbox</label>
+							</div>
+						</div>
+					</div>
+					<div id="offCampus-form-part" style="display: none;">
+						<p class="form-section-title">Off Campus Questions</p>
+						<div class="input-area">
+							<div class="text-input">
+								<span class="input-title">Donation form questions go here</span>
+								<input type="text" name="name" placeholder="First and last">
+								<span class="feedback">First and last name please!</span>			
+							</div>
 						</div>
 					</div>
 					<div class="input-area">
 						<div class="select-input">
-							<span class="input-title">Type of event</span>
+							<span class="input-title">Is this a Fundraiser</span>
 							<select onchange="fundOrDonationShow(this.value)">
 								<option selected disabled>Select one</option>
-								<option value="fundraiser">Fundraiser</option>
-								<option value="donation-drive">Donation Drive</option>
+								<option value="fundraiser">Yes</option>
+								<option value="donation-drive">No</option>
 							</select>		
 						</div>
 					</div>
@@ -87,7 +162,7 @@
 					</div>
 					<div class="input-area">
 						<div class="text-input">
-							<span class="input-title">Club Name</span>
+							<span class="input-title">Club/Organization Name</span>
 							<input type="text" name="name" placeholder="MVLA email">
 							<span class="feedback"></span>			
 						</div>
@@ -108,7 +183,7 @@
 					</div>
 					<div class="input-area">
 						<div class="select-input">
-							<span class="input-title">Is the event on campus?</span>
+							<span class="input-title">Is this event on or off campus?</span>
 							<div>
 								<p class="hoverable"><i class="material-icons">help</i></p>
 								<div>Will this event take place on MVHS campus?</div>

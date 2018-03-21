@@ -115,6 +115,33 @@
 	outline: none;
 }
 
+/* only checkbox-input css */
+.checkbox-input input {
+	display: block;
+	border: none;
+	padding: 0 10px 5px 0;
+	outline: none;
+	border-radius: 0;
+	transition: all .2s ease;
+	border-bottom: 1px solid rgba(0,0,0,0.15);
+	font-size: 16px;
+	width: 300px;
+}
+.checkbox-input > .checkboxQuestion {
+	display: inline-block;
+}
+.checkbox-input > .checkboxLabel {
+	display: inline-block;
+	padding-right: 50px;
+}
+.checkbox-input > .requestApproval {
+	display: inline-block;
+	display: none;
+}
+.checkbox-input input {
+	width: 10px !important;
+}
+
 
 .add-another {
 	margin-top: 10px;
