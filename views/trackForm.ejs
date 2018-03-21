@@ -18,15 +18,18 @@
 		<div style="background-color: rgb(216, 216, 216); padding: 20px;">
 			<h1 style="text-align: center">Welcome to Mountain View High School Approvals</h1>
 			<div style="background: white; margin-top: 50px; padding: 70px;">
-				<div class="input-area">
-					<div class="text-input">
-						<span class="input-title">Tracking ID</span>
-						<input type="text" name="trackingId" id="trackingId" placeholder="">
-					</div>
-				</div>
-				<div class="submit">
-					<button class="submitButton" onclick="trackForm()">Track</button>
-				</div>
+				<%=
+				Name of activity: {name}
+				Email: {email}
+				Approved: 
+				{
+					if ({approved}) {
+						return '<b>approved</b>'
+					} else {
+
+					}
+				}
+				%>
 			</div>
 		</div>
 		<script type="text/javascript" src="/js/track.js"></script>

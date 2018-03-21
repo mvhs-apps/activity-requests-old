@@ -13,6 +13,10 @@ router.get('/track', (req, res) => {
   res.render('track');
 });
 
+router.get('/trackForm', (req, res) => {
+  res.render('trackForm');
+});
+
 router.post('/email', (req, res) => {
   console.log('sending');
   sendEmail('marc.bacvanski@gmail.com', 'confirmation', 'abcdefgh');
