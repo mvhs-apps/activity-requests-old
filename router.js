@@ -10,6 +10,11 @@ router.get('/form', (req, res) => {
   res.render('form');
 });
 
+
+router.get('/track', (req, res) => {
+  res.render('track');
+});
+
 router.get('/email', (req, res) => {
   console.log('sending');
   var id = 'asdfasdf';
