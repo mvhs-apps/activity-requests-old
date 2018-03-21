@@ -130,116 +130,82 @@
 							</div>
 						</div>
 					</div>
-					<div id="offCampus-form-part" style="display: none;">
-						<p class="form-section-title">Off Campus Questions</p>
-						<div class="input-area">
-							<div class="text-input">
-								<span class="input-title">Donation form questions go here</span>
-								<input type="text" name="name" placeholder="First and last">
-								<span class="feedback">First and last name please!</span>			
-							</div>
-						</div>
-					</div>
 					<div class="input-area">
 						<div class="select-input">
 							<span class="input-title">Is this a Fundraiser</span>
-							<select onchange="fundOrDonationShow(this.value)">
+							<select onchange="fundraiserShow(this.value)">
 								<option selected disabled>Select one</option>
 								<option value="fundraiser">Yes</option>
-								<option value="donation-drive">No</option>
+								<option value="noFundraiser">No</option>
 							</select>		
 						</div>
 					</div>
-				</div>
-				<div id="donation-form-part" style="display: none;">
-					<p class="form-section-title">Donation Questions</p>
-					<div class="input-area">
-						<div class="text-input">
-							<span class="input-title">Donation form questions go here</span>
-							<input type="text" name="name" placeholder="First and last">
-							<span class="feedback">First and last name please!</span>			
-						</div>
-					</div>
-					<div class="input-area">
-						<div class="text-input">
-							<span class="input-title">Club/Organization Name</span>
-							<input type="text" name="name" placeholder="MVLA email">
-							<span class="feedback"></span>			
-						</div>
-					</div>
-					<div class="input-area">
-						<div class="text-input">
-							<span class="input-title">Your Email</span>
-							<input type="text" name="name" placeholder="MVLA email">
-							<span class="feedback">Please enter a valid MVLA email</span>			
-						</div>
-					</div>
-					<div class="input-area">
-						<div class="text-input">
-							<span class="input-title">Club Advisor Email</span>
-							<input type="text" name="name" placeholder="MVLA email">
-							<span class="feedback">Please enter a valid MVLA email</span>			
-						</div>
-					</div>
-					<div class="input-area">
-						<div class="select-input">
-							<span class="input-title">Is this event on or off campus?</span>
-							<div>
-								<p class="hoverable"><i class="material-icons">help</i></p>
-								<div>Will this event take place on MVHS campus?</div>
+					<div id="fundraiser-form-part" style="display: none;">
+						<p class="form-section-title">Fundraiser Questions</p>
+						<div class="input-area">
+							<div class="select-input">
+								<span class="input-title">Which of the following best describes your fundraiser?</span>
+								<div>
+									<p class="hoverable"><i class="material-icons">help</i></p>
+									<div>placeholder....</div>
+								</div>
+								<select onchange="typeOfFundraiser(this.value)">
+									<option selected disabled>Select one</option>
+									<option value="restaurantFundraiser">Restaurant</option>
+									<option value="donationDriveFundraiser">Donation Drive</option>
+									<option value="foodSalesFundraiser">Food Sales</option>
+									<option value="productFundraiser">Product</option>
+								</select>		
 							</div>
-							<select>
-								<option selected disabled>Select one</option>
-								<option value="1">Yes</option>
-								<option value="0">No</option>
-							</select>		
 						</div>
 					</div>
-				</div>
-				<div id="fundraiser-form-part" style="display: none;">
-					<p class="form-section-title">Fundraiser Questions</p>
-					<div class="input-area">
-						<div class="text-input">
-							<span class="input-title">Name of Fundraiser</span>
-							<input type="text" name="name" placeholder="First and last">
-							<span class="feedback"></span>			
-						</div>
-					</div>
-					<div class="input-area">
-						<div class="text-input">
-							<span class="input-title">Dates of Fundraiser</span>
-							<input type="date" name="name" placeholder="mm/dd/yyyy">
-							<a class="add-another" onclick="addAnotherInputField(this.previousSibling.previousSibling, 'date')"><i class="material-icons">add_circle</i> add another date</a>
-							<span class="feedback"></span>
-						</div>
-					</div>
-					<div class="input-area">
-						<div class="text-input">
-							<span class="input-title">Your Email</span>
-							<input type="text" name="name" placeholder="MVLA email">
-							<span class="feedback">Please enter a valid MVLA email</span>			
-						</div>
-					</div>
-					<div class="input-area">
-						<div class="text-input">
-							<span class="input-title">Club Advisor Email</span>
-							<input type="text" name="name" placeholder="MVLA email">
-							<span class="feedback">Please enter a valid MVLA email</span>			
-						</div>
-					</div>
-					<div class="input-area">
-						<div class="select-input">
-							<span class="input-title">Is the event on campus?</span>
-							<div>
-								<p class="hoverable"><i class="material-icons">help</i></p>
-								<div>Will this event take place on MVHS campus?</div>
+					<div id="restaurant-form-part" style="display: none;">
+						<p class="form-section-title">Restaurant Fundraiser Questions</p>
+						<div class="input-area">
+							<div class="text-input">
+								<span class="input-title">Dates of Fundraiser</span>
+								<input type="date" name="name" placeholder="mm/dd/yyyy">
+								<a class="add-another" onclick="addAnotherInputField(this.previousSibling.previousSibling, 'date')"><i class="material-icons">add_circle</i> add another date</a>
+								<span class="feedback"></span>
 							</div>
-							<select>
-								<option selected disabled>Select one</option>
-								<option value="1">Yes</option>
-								<option value="0">No</option>
-							</select>		
 						</div>
+						
+					</div>
+					<div id="donationDrive-form-part" style="display: none;">
+						<p class="form-section-title">Donation Drive Fundraiser Questions</p>
+						<div class="input-area">
+							<div class="text-input">
+								<span class="input-title">Dates of Fundraiser</span>
+								<input type="date" name="name" placeholder="mm/dd/yyyy">
+								<a class="add-another" onclick="addAnotherInputField(this.previousSibling.previousSibling, 'date')"><i class="material-icons">add_circle</i> add another date</a>
+								<span class="feedback"></span>
+							</div>
+						</div>
+						
+					</div>
+					<div id="foodSales-form-part" style="display: none;">
+						<p class="form-section-title">Food Sales Fundraiser Questions</p>
+						<div class="input-area">
+							<div class="text-input">
+								<span class="input-title">Dates of Fundraiser</span>
+								<input type="date" name="name" placeholder="mm/dd/yyyy">
+								<a class="add-another" onclick="addAnotherInputField(this.previousSibling.previousSibling, 'date')"><i class="material-icons">add_circle</i> add another date</a>
+								<span class="feedback"></span>
+							</div>
+						</div>
+						
+					</div>
+					<div id="product-form-part" style="display: none;">
+						<p class="form-section-title">Product Fundraiser Questions</p>
+						<div class="input-area">
+							<div class="text-input">
+								<span class="input-title">Dates of Fundraiser</span>
+								<input type="date" name="name" placeholder="mm/dd/yyyy">
+								<a class="add-another" onclick="addAnotherInputField(this.previousSibling.previousSibling, 'date')"><i class="material-icons">add_circle</i> add another date</a>
+								<span class="feedback"></span>
+							</div>
+						</div>
+						
 					</div>
 				</div>
 			</div>

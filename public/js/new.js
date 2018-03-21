@@ -2,9 +2,11 @@
 
 var mainFormPart = document.getElementById('main-form-part');
 var fundrasierFormPart = document.getElementById('fundraiser-form-part');
-var donationFormPart = document.getElementById('donation-form-part');
 var onCampusFormPart = document.getElementById('onCampus-form-part');
-var offCampusFormPart = document.getElementById('offCampus-form-part');
+var restaurantFormPart = document.getElementById('restaurant-form-part');
+var donationDriveFormPart = document.getElementById('donationDrive-form-part');
+var foodSalesFormPart = document.getElementById('foodSales-form-part');
+var productFormPart = document.getElementById('product-form-part');
 const emailRegEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 var typeOfForm;
 var onOrOffCampusValue;
@@ -14,33 +16,51 @@ var insertNodeAfter = function(referenceNode, newNode) {
 }
 
 
-var fundOrDonationShow = function(value) {
+var fundraiserShow = function(value) {
 	if (value === 'fundraiser') {
 		fundrasierFormPart.style.display = 'block';
-		donationFormPart.style.display = 'none';
 		typeOfForm = value;
-	} else if (value === 'donation-drive') {
-		donationFormPart.style.display = 'block';
+	} else if (value === 'noFundraiser') {
 		fundrasierFormPart.style.display = 'none';
 		typeOfForm = value;
 	} else {
 		fundrasierFormPart.style.display = 'none';
-		donationFormPart.style.display = 'none';
 	}
 }
 
 var onOrOffCampus = function(value) {
 	if (value === 'onCampus') {
 		onCampusFormPart.style.display = 'block';
-		offCampusFormPart.style.display = 'none';
 		onOrOffCampusValue = value;
 	} else if (value === 'offCampus') {
-		offCampusFormPart.style.display = 'block';
 		onCampusFormPart.style.display = 'none';
 		onOrOffCampusValue = value;
 	} else {
 		onCampusFormPart.style.display = 'none';
-		offCampusFormPart.style.display = 'none';
+	}
+}
+
+var typeOfFundraiser = function(value) {
+	if(value === 'restaurantFundraiser') {
+		restaurantFormPart.style.display = 'block';
+		donationDriveFormPart.style.display = 'none';
+		foodSalesFormPart.style.display = 'none';
+		productFormPart.style.display = 'none';
+	} else if(value === 'donationDriveFundraiser') {
+		restaurantFormPart.style.display = 'none';
+		donationDriveFormPart.style.display = 'block';
+		foodSalesFormPart.style.display = 'none';
+		productFormPart.style.display = 'none';
+	} else if(value === 'foodSalesFundraiser') {
+		restaurantFormPart.style.display = 'none';
+		donationDriveFormPart.style.display = 'none';
+		foodSalesFormPart.style.display = 'block';
+		productFormPart.style.display = 'none';
+	} else if(value === 'productFundraiser') {
+		restaurantFormPart.style.display = 'none';
+		donationDriveFormPart.style.display = 'none';
+		foodSalesFormPart.style.display = 'none';
+		productFormPart.style.display = 'block';
 	}
 }
 
