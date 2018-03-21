@@ -1,5 +1,6 @@
 let express = require('express');
 let router = express.Router();
+const mailer = require('gmail-send');
 
 router.get('/', (req, res) => {
   res.render('index');
@@ -8,6 +9,7 @@ router.get('/', (req, res) => {
 router.get('/form', (req, res) => {
   res.render('form');
 });
+
 
 router.get('/track', (req, res) => {
   res.render('track');
@@ -19,36 +21,34 @@ router.get('/trackForm', (req, res) => {
 
 router.post('/email', (req, res) => {
   console.log('sending');
-  sendEmail('marc.bacvanski@gmail.com', 'confirmation', 'abcdefgh');
+  var id = 'asdfasdf';
+  sendEmail({
+    to: 'ajpat1234@gmail.com',
+    subject: 'Hello sd!',
+    html: `Some  smessage goes here: ${id}`
+  });
 });
 
 router.post('/')
 
-let sendEmail = (email, type, id) => {
-  if (email && type && id) {
-    let trackingLink = 'localhost:8000/track?id=' + id;
-    let message = '';
-    let subject = '';
-    if (type === 'confirmation') {
-      message = 'Hello!\n\nThank you for submitting a fundraising form! Your tracking' +
-          'code is ' + id + '. Follow this <a href= ' + trackingLink +
-          '>link</a>' +
-          ' to track the status of your application.';
-    }
-    let send = require('gmail-send')({
+let sendEmail = (params) => {
+  if (params.to && params.subject && params.html) {
+    let send = mailer({
       user: process.env.GMAIL_USERNAME,
       pass: process.env.GMAIL_PASSWORD,
-      to: email,
-      subject: subject,
-      text: message,
+      from: 'MVHS ASB Approvals',
+      to: params.to,
+      subject: params.subject,
+      html: params.html,
     });
 
     // Override any default option and send email
     send({}, function(err, response) {
       if (!err) {
-        res.status(200).send({response: response});
+        // res.status(200).send({response: response});
       } else {
-        res.status(400).send({error: err});
+        console.error('error ' + err);
+        // res.status(400).send({error: err});
       }
     });
   }
