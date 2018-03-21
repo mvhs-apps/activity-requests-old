@@ -6,6 +6,11 @@ var donationFormPart = document.getElementById('donation-form-part');
 const emailRegEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 var typeOfForm;
 
+var insertNodeAfter = function(referenceNode, newNode) {
+	referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+}
+
+
 var fundOrDonationShow = function(value) {
 	if (value === 'fundraiser') {
 		fundrasierFormPart.style.display = 'block';
@@ -20,6 +25,19 @@ var fundOrDonationShow = function(value) {
 		donationFormPart.style.display = 'none';
 	}
 }
+
+
+var addAnotherInputField = function(element, type) {
+
+	var newNode = document.createElement('input');
+	newNode.style.marginTop = '10px';
+	newNode.type = type;
+	newNode.placeholder = 'mm/dd/yyyy';
+
+	insertNodeAfter(element, newNode);
+}
+
+
 
 
 /*
