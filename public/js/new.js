@@ -33,6 +33,10 @@ var onOrOffCampus = function(value) {
     onOrOffCampusValue = value;
   } else if (value === 'offCampus') {
     onCampusFormPart.style.display = 'none';
+    restaurantFormPart.style.display = 'none';
+    donationDriveFormPart.style.display = 'none';
+    foodSalesFormPart.style.display = 'none';
+    productFormPart.style.display = 'none';
     onOrOffCampusValue = value;
   } else {
     onCampusFormPart.style.display = 'none';
