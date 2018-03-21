@@ -12,96 +12,96 @@ var typeOfForm;
 var onOrOffCampusValue;
 
 var insertNodeAfter = function(referenceNode, newNode) {
-  referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+	referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
 };
 
 var fundraiserShow = function(value) {
-  if (value === 'fundraiser') {
-    fundrasierFormPart.style.display = 'block';
-    typeOfForm = value;
-  } else if (value === 'noFundraiser') {
-    fundrasierFormPart.style.display = 'none';
-    restaurantFormPart.style.display = 'none';
-    donationDriveFormPart.style.display = 'none';
-    foodSalesFormPart.style.display = 'none';
-    productFormPart.style.display = 'none';
-    typeOfForm = value;
-  } else {
-    fundrasierFormPart.style.display = 'none';
-  }
+	if (value === 'fundraiser') {
+		fundrasierFormPart.style.display = 'block';
+		typeOfForm = value;
+	} else if (value === 'noFundraiser') {
+		fundrasierFormPart.style.display = 'none';
+		restaurantFormPart.style.display = 'none';
+		donationDriveFormPart.style.display = 'none';
+		foodSalesFormPart.style.display = 'none';
+		productFormPart.style.display = 'none';
+		typeOfForm = value;
+	} else {
+		fundrasierFormPart.style.display = 'none';
+	}
 };
 
 var onOrOffCampus = function(value) {
-  if (value === 'onCampus') {
-    onCampusFormPart.style.display = 'block';
-    onOrOffCampusValue = value;
-  } else if (value === 'offCampus') {
-    onCampusFormPart.style.display = 'none';
-    onOrOffCampusValue = value;
-  } else {
-    onCampusFormPart.style.display = 'none';
-  }
+	if (value === 'onCampus') {
+		onCampusFormPart.style.display = 'block';
+		onOrOffCampusValue = value;
+	} else if (value === 'offCampus') {
+		onCampusFormPart.style.display = 'none';
+		onOrOffCampusValue = value;
+	} else {
+		onCampusFormPart.style.display = 'none';
+	}
 };
 
 var typeOfFundraiser = function(value) {
-  if (value === 'restaurantFundraiser') {
-    restaurantFormPart.style.display = 'block';
-    donationDriveFormPart.style.display = 'none';
-    foodSalesFormPart.style.display = 'none';
-    productFormPart.style.display = 'none';
-  } else if (value === 'donationDriveFundraiser') {
-    restaurantFormPart.style.display = 'none';
-    donationDriveFormPart.style.display = 'block';
-    foodSalesFormPart.style.display = 'none';
-    productFormPart.style.display = 'none';
-  } else if (value === 'foodSalesFundraiser') {
-    restaurantFormPart.style.display = 'none';
-    donationDriveFormPart.style.display = 'none';
-    foodSalesFormPart.style.display = 'block';
-    productFormPart.style.display = 'none';
-  } else if (value === 'productFundraiser') {
-    restaurantFormPart.style.display = 'none';
-    donationDriveFormPart.style.display = 'none';
-    foodSalesFormPart.style.display = 'none';
-    productFormPart.style.display = 'block';
-  }
+	if (value === 'restaurantFundraiser') {
+		restaurantFormPart.style.display = 'block';
+		donationDriveFormPart.style.display = 'none';
+		foodSalesFormPart.style.display = 'none';
+		productFormPart.style.display = 'none';
+	} else if (value === 'donationDriveFundraiser') {
+		restaurantFormPart.style.display = 'none';
+		donationDriveFormPart.style.display = 'block';
+		foodSalesFormPart.style.display = 'none';
+		productFormPart.style.display = 'none';
+	} else if (value === 'foodSalesFundraiser') {
+		restaurantFormPart.style.display = 'none';
+		donationDriveFormPart.style.display = 'none';
+		foodSalesFormPart.style.display = 'block';
+		productFormPart.style.display = 'none';
+	} else if (value === 'productFundraiser') {
+		restaurantFormPart.style.display = 'none';
+		donationDriveFormPart.style.display = 'none';
+		foodSalesFormPart.style.display = 'none';
+		productFormPart.style.display = 'block';
+	}
 };
 
 var selectedFacility = function() {
-  if (document.getElementById('smallGymFacility').checked) {
-    document.getElementById('smallGymRequest').style.display = 'inline-block';
-  } else {
-    document.getElementById('smallGymRequest').style.display = 'none';
-  }
-  if (document.getElementById('largeGymFacility').checked) {
-    document.getElementById('largeGymRequest').style.display = 'inline-block';
-  } else {
-    document.getElementById('largeGymRequest').style.display = 'none';
-  }
-  if (document.getElementById('libraryFacility').checked) {
-    document.getElementById('libraryRequest').style.display = 'inline-block';
-  } else {
-    document.getElementById('libraryRequest').style.display = 'none';
-  }
-  if (document.getElementById('cafeteriaFacility').checked) {
-    document.getElementById('cafeteriaRequest').style.display = 'inline-block';
-  } else {
-    document.getElementById('cafeteriaRequest').style.display = 'none';
-  }
-  if (document.getElementById('classroomsFacility').checked) {
-    document.getElementById('classroomsRequest').style.display = 'inline-block';
-  } else {
-    document.getElementById('classroomsRequest').style.display = 'none';
-  }
+	if (document.getElementById('smallGymFacility').checked) {
+		document.getElementById('smallGymRequest').style.display = 'inline-block';
+	} else {
+		document.getElementById('smallGymRequest').style.display = 'none';
+	}
+	if (document.getElementById('largeGymFacility').checked) {
+		document.getElementById('largeGymRequest').style.display = 'inline-block';
+	} else {
+		document.getElementById('largeGymRequest').style.display = 'none';
+	}
+	if (document.getElementById('libraryFacility').checked) {
+		document.getElementById('libraryRequest').style.display = 'inline-block';
+	} else {
+		document.getElementById('libraryRequest').style.display = 'none';
+	}
+	if (document.getElementById('cafeteriaFacility').checked) {
+		document.getElementById('cafeteriaRequest').style.display = 'inline-block';
+	} else {
+		document.getElementById('cafeteriaRequest').style.display = 'none';
+	}
+	if (document.getElementById('classroomsFacility').checked) {
+		document.getElementById('classroomsRequest').style.display = 'inline-block';
+	} else {
+		document.getElementById('classroomsRequest').style.display = 'none';
+	}
 };
 
 var addAnotherInputField = function(element, type) {
-  var newNode = document.createElement('input');
-  newNode.style.marginTop = '10px';
-  newNode.type = type;
-  newNode.placeholder = 'mm/dd/yyyy';
+	var newNode = document.createElement('input');
+	newNode.style.marginTop = '10px';
+	newNode.type = type;
+	newNode.placeholder = 'mm/dd/yyyy';
 
-  insertNodeAfter(element, newNode);
+	insertNodeAfter(element, newNode);
 };
 
 /*
@@ -113,50 +113,50 @@ var addAnotherInputField = function(element, type) {
  */
 
 var capitalizeEachWordInStr = function(str) {
-  return str.toLowerCase().split(' ').map(function(word) {
-    if (word[0]) return word[0].toUpperCase() + word.substr(1);
-  }).join(' ');
+	return str.toLowerCase().split(' ').map(function(word) {
+		if (word[0]) return word[0].toUpperCase() + word.substr(1);
+	}).join(' ');
 };
 
 var areAllArrayValuesLongerThan = function(arr, amount) {
-  for (var i = 0; i < arr.length; i++) {
-    if (arr[i].length <= amount) {
-      return false;
-    }
-  }
-  return true;
+	for (var i = 0; i < arr.length; i++) {
+		if (arr[i].length <= amount) {
+			return false;
+		}
+	}
+	return true;
 };
 
 var validateFullName = function(element) {
-  var value = element.value;
-  var parts = value.split(' ');
+	var value = element.value;
+	var parts = value.split(' ');
 
-  if (parts.length > 1 && areAllArrayValuesLongerThan(parts, 1)) {
-    // capitalizes each word
-    element.value = capitalizeEachWordInStr(element.value);
-    element.style.borderColor = '';
-    element.parentNode.querySelector('.feedback').style.display = 'none';
-  } else {
-    // changes border color and shows the feedback <span>
-    element.style.borderColor = '#d50000';
-    element.parentNode.querySelector('.feedback').style.display = 'block';
-  }
+	if (parts.length > 1 && areAllArrayValuesLongerThan(parts, 1)) {
+		// capitalizes each word
+		element.value = capitalizeEachWordInStr(element.value);
+		element.style.borderColor = '';
+		element.parentNode.querySelector('.feedback').style.display = 'none';
+	} else {
+		// changes border color and shows the feedback <span>
+		element.style.borderColor = '#d50000';
+		element.parentNode.querySelector('.feedback').style.display = 'block';
+	}
 };
 
 var validateEmail = function(element, shouldEndWith) {
-  // trims any extra white space off the value
-  element.value = element.value.trim();
-  var value = element.value;
-  // if no argument for that, sets defualt arg
-  if (!shouldEndWith) var shouldEndWith = '';
+	// trims any extra white space off the value
+	element.value = element.value.trim();
+	var value = element.value;
+	// if no argument for that, sets defualt arg
+	if (!shouldEndWith) var shouldEndWith = '';
 
-  // tests for vailidity using the emailRegEx const defined above
-  if (emailRegEx.test(value) && value.endsWith(shouldEndWith)) {
-    element.style.borderColor = '';
-    element.parentNode.querySelector('.feedback').style.display = 'none';
-  } else {
-    // changes border color and shows the feedback <span>
-    element.style.borderColor = '#d50000';
-    element.parentNode.querySelector('.feedback').style.display = 'block';
-  }
+	// tests for vailidity using the emailRegEx const defined above
+	if (emailRegEx.test(value) && value.endsWith(shouldEndWith)) {
+		element.style.borderColor = '';
+		element.parentNode.querySelector('.feedback').style.display = 'none';
+	} else {
+		// changes border color and shows the feedback <span>
+		element.style.borderColor = '#d50000';
+		element.parentNode.querySelector('.feedback').style.display = 'block';
+	}
 };

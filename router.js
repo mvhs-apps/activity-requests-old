@@ -25,7 +25,7 @@ router.get('/email', (req, res) => {
   });
 });
 
-router.post('/')
+router.post('/');
 
 let sendEmail = (params) => {
   if (params.to && params.subject && params.html) {
