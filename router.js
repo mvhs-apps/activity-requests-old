@@ -15,7 +15,11 @@ router.get('/track', (req, res) => {
   res.render('track');
 });
 
-router.get('/email', (req, res) => {
+router.get('/trackForm', (req, res) => {
+  res.render('trackForm');
+});
+
+router.post('/email', (req, res) => {
   console.log('sending');
   var id = 'asdfasdf';
   sendEmail({
