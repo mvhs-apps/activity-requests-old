@@ -28,7 +28,9 @@ app.use('/', require('./router'));
 app.use(function(req, res, next) {
   let err = new Error('Not Found');
   err.status = 404;
-  next(err);
+  res.render('fourofour');
+  res.status(400);
+  // next(err);
 });
 
 // error handler
