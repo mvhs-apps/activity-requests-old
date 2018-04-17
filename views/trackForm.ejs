@@ -1,37 +1,33 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700|Material+Icons">
-		<link rel="stylesheet" type="text/css" href="/stylesheets/form.css">
-		<meta content="width=device-width, initial-scale=1" name="viewport">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700|Material+Icons">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/form.css">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
 
-		<title>Track Approval</title>
+    <title>Track Approval</title>
 
-	</head>
-	<body>
-		<div id="navigation">
-			<div style="padding: 10px;">
-				<img src="/img/logo.png" height="50" width="94" style="margin-left: 50px;">						
-			</div>
-		</div>
-		<div style="background-color: rgb(216, 216, 216); padding: 20px;">
-			<h1 style="text-align: center">Welcome to Mountain View High School Approvals</h1>
-			<div style="background: white; margin-top: 50px; padding: 70px;">
-				<%=
-				Name of activity: {name}
-				Email: {email}
-				Approved: 
-				{
-					if ({approved}) {
-						return '<b>approved</b>'
-					} else {
+</head>
+<body>
+<%- include templates/navbar.ejs %>
 
-					}
-				}
-				%>
-			</div>
-		</div>
-		<script type="text/javascript" src="/js/track.js"></script>
-	</body>
+<div style="background-color: rgb(216, 216, 216); padding: 20px;">
+    <h1 style="text-align: center">Welcome to Mountain View High School Approvals</h1>
+    <div style="background: white; margin-top: 50px; padding: 70px;">
+        <%=
+        Name of {name}
+        {email}
+        {
+            if ({approved}) {
+                return '<b>approved</b>'
+            } else {
+
+            }
+        }
+        %>
+    </div>
+</div>
+<script type="text/javascript" src="/js/track.js"></script>
+</body>
 </html>
