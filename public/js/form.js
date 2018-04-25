@@ -2,107 +2,72 @@
 
 var mainFormPart = document.getElementById('main-form-part');
 var fundrasierFormPart = document.getElementById('fundraiser-form-part');
-var onCampusFormPart = document.getElementById('onCampus-form-part');
-var restaurantFormPart = document.getElementById('restaurant-form-part');
-var donationDriveFormPart = document.getElementById('donationDrive-form-part');
-var foodSalesFormPart = document.getElementById('foodSales-form-part');
-var productFormPart = document.getElementById('product-form-part');
+var donationFormPart = document.getElementById('donation-form-part');
 const emailRegEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-var typeOfForm;
-var onOrOffCampusValue;
+var formObject;
 
-var insertNodeAfter = function(referenceNode, newNode) {
-	referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
-};
+var getObjectOfEntireForm = function() {
 
-var fundraiserShow = function(value) {
-	if (value === 'fundraiser') {
-		fundrasierFormPart.style.display = 'block';
-		typeOfForm = value;
-	} else if (value === 'noFundraiser') {
-		fundrasierFormPart.style.display = 'none';
-		restaurantFormPart.style.display = 'none';
-		donationDriveFormPart.style.display = 'none';
-		foodSalesFormPart.style.display = 'none';
-		productFormPart.style.display = 'none';
-		typeOfForm = value;
-	} else {
-		fundrasierFormPart.style.display = 'none';
-	}
-};
+	var generalObject = $('#main-form-part').serializeArray();
+	var campusObject = $('#on-campus-questions').serializeArray();
+	var campus = {};
+	var general = {};
 
-var onOrOffCampus = function(value) {
-	if (value === 'onCampus') {
-		onCampusFormPart.style.display = 'block';
-		onOrOffCampusValue = value;
-	} else if (value === 'offCampus') {
-		onCampusFormPart.style.display = 'none';
-		onOrOffCampusValue = value;
-	} else {
-		onCampusFormPart.style.display = 'none';
+	for (var i = 0; i < generalObject.length; i++) {
+		if (generalObject[i].value !== '') {
+			general[generalObject[i].name] = generalObject[i].value;
+		}
 	}
-};
+	for (var i = 0; i < campusObject.length; i++) {
+		if (campusObject[i].value !== '') {
+			campus[campusObject[i].name] = campusObject[i].value;
+		}
+	}
 
-var typeOfFundraiser = function(value) {
-	if (value === 'restaurantFundraiser') {
-		restaurantFormPart.style.display = 'block';
-		donationDriveFormPart.style.display = 'none';
-		foodSalesFormPart.style.display = 'none';
-		productFormPart.style.display = 'none';
-	} else if (value === 'donationDriveFundraiser') {
-		restaurantFormPart.style.display = 'none';
-		donationDriveFormPart.style.display = 'block';
-		foodSalesFormPart.style.display = 'none';
-		productFormPart.style.display = 'none';
-	} else if (value === 'foodSalesFundraiser') {
-		restaurantFormPart.style.display = 'none';
-		donationDriveFormPart.style.display = 'none';
-		foodSalesFormPart.style.display = 'block';
-		productFormPart.style.display = 'none';
-	} else if (value === 'productFundraiser') {
-		restaurantFormPart.style.display = 'none';
-		donationDriveFormPart.style.display = 'none';
-		foodSalesFormPart.style.display = 'none';
-		productFormPart.style.display = 'block';
+	return {
+		general,
+		campus
 	}
-};
+}
 
-var selectedFacility = function() {
-	if (document.getElementById('smallGymFacility').checked) {
-		document.getElementById('smallGymRequest').style.display = 'inline-block';
-	} else {
-		document.getElementById('smallGymRequest').style.display = 'none';
-	}
-	if (document.getElementById('largeGymFacility').checked) {
-		document.getElementById('largeGymRequest').style.display = 'inline-block';
-	} else {
-		document.getElementById('largeGymRequest').style.display = 'none';
-	}
-	if (document.getElementById('libraryFacility').checked) {
-		document.getElementById('libraryRequest').style.display = 'inline-block';
-	} else {
-		document.getElementById('libraryRequest').style.display = 'none';
-	}
-	if (document.getElementById('cafeteriaFacility').checked) {
-		document.getElementById('cafeteriaRequest').style.display = 'inline-block';
-	} else {
-		document.getElementById('cafeteriaRequest').style.display = 'none';
-	}
-	if (document.getElementById('classroomsFacility').checked) {
-		document.getElementById('classroomsRequest').style.display = 'inline-block';
-	} else {
-		document.getElementById('classroomsRequest').style.display = 'none';
-	}
-};
+var formChangeHandler = function() {
+	formObject = getObjectOfEntireForm();
 
-var addAnotherInputField = function(element, type) {
-	var newNode = document.createElement('input');
-	newNode.style.marginTop = '10px';
-	newNode.type = type;
-	newNode.placeholder = 'mm/dd/yyyy';
+	console.log(formObject);
 
-	insertNodeAfter(element, newNode);
-};
+	if (formObject.general) {
+
+		if (formObject.general.event_on_campus === 'yes') {
+			$('#on-campus-questions').fadeIn();
+		} else {
+			$('#on-campus-questions').fadeOut();
+		}
+
+		if (formObject.general.is_fundraiser === 'yes') {
+			$('#fundraiser-questions').fadeIn();
+		} else {
+			$('#fundraiser-questions').fadeOut();
+		}
+
+	}
+
+	if (formObject.campus) {
+
+		for (var val of ['classroom', 'theater', 'library', 'gym', 'cafeteria', 'screens', 'tables', 'cashboxes']) {
+
+			var id = '#' + val + '-checklist-extension';
+
+			if (formObject.campus[val] === 'on') {
+				$(id).fadeIn();
+			} else {
+				$(id).fadeOut();
+			}
+
+		}
+
+	}
+
+}
 
 /*
  * below is where
@@ -112,20 +77,47 @@ var addAnotherInputField = function(element, type) {
  * I've made them so most of them are reusable
  */
 
-var capitalizeEachWordInStr = function(str) {
-	return str.toLowerCase().split(' ').map(function(word) {
-		if (word[0]) return word[0].toUpperCase() + word.substr(1);
-	}).join(' ');
-};
 
-var areAllArrayValuesLongerThan = function(arr, amount) {
-	for (var i = 0; i < arr.length; i++) {
-		if (arr[i].length <= amount) {
-			return false;
+var dealWithValProblem = (function() {
+	
+	var elementsWithValidationProblems = [];
+	
+	return {
+		remove: function(element) {
+			var i = dealWithValProblem.getIndexOfElement(element);
+			if (i > -1) {
+				elementsWithValidationProblems.splice(i, 1);
+			}
+		},
+		add: function(element) {
+			if (dealWithValProblem.getIndexOfElement(element) === -1) {
+				elementsWithValidationProblems.push(element);
+			}
+		},
+		getIndexOfElement: function(element) {
+			for (var i = 0; i < elementsWithValidationProblems; i++)
+				if (elementsWithValidationProblems[i] === element)
+					return i;
+			return -1;
+		},
+		getLength: function() {
+			return elementsWithValidationProblems.length;
 		}
 	}
+})();
+
+var capitalizeEachWordInStr = function(str) {
+	return str.toLowerCase().split(' ').map(function(word) {
+			if (word[0]) return word[0].toUpperCase() + word.substr(1);
+		}).join(' ');
+}
+
+var areAllArrayValuesLongerThan = function(arr, amount) {
+	for (var i = 0; i < arr.length; i++) 
+		if (arr[i].length <= amount) 
+			return false;
 	return true;
-};
+}
 
 var validateFullName = function(element) {
 	var value = element.value;
@@ -136,12 +128,30 @@ var validateFullName = function(element) {
 		element.value = capitalizeEachWordInStr(element.value);
 		element.style.borderColor = '';
 		element.parentNode.querySelector('.feedback').style.display = 'none';
+		dealWithValProblem.remove(element);
 	} else {
 		// changes border color and shows the feedback <span>
 		element.style.borderColor = '#d50000';
 		element.parentNode.querySelector('.feedback').style.display = 'block';
+		dealWithValProblem.add(element);
 	}
-};
+}
+
+var validateNumber = function(element, min, max) {
+
+	var value = parseInt(element.value);
+
+	if (value <= max && value >= min) {
+		element.style.borderColor = '';
+		element.parentNode.querySelector('.feedback').style.display = 'none';
+		dealWithValProblem.remove(element);
+	} else {
+		element.style.borderColor = '#d50000';
+		element.parentNode.querySelector('.feedback').style.display = 'block';
+		dealWithValProblem.add(element);
+	}
+
+}
 
 var validateEmail = function(element, shouldEndWith) {
 	// trims any extra white space off the value
@@ -154,9 +164,12 @@ var validateEmail = function(element, shouldEndWith) {
 	if (emailRegEx.test(value) && value.endsWith(shouldEndWith)) {
 		element.style.borderColor = '';
 		element.parentNode.querySelector('.feedback').style.display = 'none';
+		dealWithValProblem.remove(element);
 	} else {
 		// changes border color and shows the feedback <span>
 		element.style.borderColor = '#d50000';
 		element.parentNode.querySelector('.feedback').style.display = 'block';
+		dealWithValProblem.add(element);
 	}
-};
+
+}
