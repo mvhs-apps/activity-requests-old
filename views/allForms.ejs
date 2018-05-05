@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Roboto:400,700|Material+Icons">
+		<meta content="width=device-width, initial-scale=1" name="viewport">
+
+		<title>New Approval</title>
+
+		<script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+		<script>
+		  // Initialize Firebase
+		  var config = {
+		    apiKey: "AIzaSyDa5U-zlZrhgahLMVz8I_nEi3s5cp9t5jQ",
+		    authDomain: "mvhs-approvals.firebaseapp.com",
+		    databaseURL: "https://mvhs-approvals.firebaseio.com",
+		    projectId: "mvhs-approvals",
+		    storageBucket: "mvhs-approvals.appspot.com",
+		    messagingSenderId: "43618643962"
+		  };
+		  firebase.initializeApp(config);
+		</script>
+
+	</head>
+	<body>
+		<div id="navigation">
+			<%- include templates/navbar.ejs %>
+		</div>
+		<link rel="stylesheet" type="text/css" href="/stylesheets/form.css">
+
+		<div style="background-color: rgb(216, 216, 216); padding: 20px;">
+			<h1 style="text-align: center">Welcome to Mountain View High School Approvals</h1>
+			<div style="background: white; margin-top: 50px; padding: 70px;">
+				
+			</div>
+		</div>
+		<script type="text/javascript" src="/js/allForms.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	</body>
+</html>

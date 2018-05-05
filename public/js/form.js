@@ -173,3 +173,9 @@ var validateEmail = function(element, shouldEndWith) {
 	}
 
 }
+
+function submitForm() {
+  firebase.database().ref('test/').push({
+    formObject
+  });
+}

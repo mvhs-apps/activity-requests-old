@@ -7,6 +7,20 @@
 
 		<title>New Approval</title>
 
+		<script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+		<script>
+		  // Initialize Firebase
+		  var config = {
+		    apiKey: "AIzaSyDa5U-zlZrhgahLMVz8I_nEi3s5cp9t5jQ",
+		    authDomain: "mvhs-approvals.firebaseapp.com",
+		    databaseURL: "https://mvhs-approvals.firebaseio.com",
+		    projectId: "mvhs-approvals",
+		    storageBucket: "mvhs-approvals.appspot.com",
+		    messagingSenderId: "43618643962"
+		  };
+		  firebase.initializeApp(config);
+		</script>
+
 	</head>
 	<body>
 		<div id="navigation">
@@ -215,6 +229,7 @@
 					</div>
 				</form>
 			</div>
+			<button onclick="submitForm();">Submit</button>
 		</div>
 		<script type="text/javascript" src="/js/form.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
