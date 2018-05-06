@@ -15,7 +15,7 @@ window.onload = function() {
 	  		for (var j = 0; j < array[i]["formObject"]["dates"].length; j++) {
 		  		var fromDate = new Date(array[i]["formObject"]["dates"][j]["from"]);
 		  		var toDate = new Date(array[i]["formObject"]["dates"][j]["to"]);
-		  		totalHTML += fromDate.toLocaleDateString('en-US', {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', timeZone: 'America/Los_Angeles', hour12: true, hour: 'numeric', minute: 'numeric'}) + " - " + toDate.toLocaleTimeString('en-US', {timeZone: 'America/Los_Angeles', hour12: true, hour: 'numeric', minute: 'numeric'}) + "<br>";
+		  		totalHTML += fromDate.toLocaleDateString('en-US', {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', timeZone: 'America/Los_Angeles', hour12: true, hour: 'numeric', minute: 'numeric'}) + " to " + toDate.toLocaleTimeString('en-US', {timeZone: 'America/Los_Angeles', hour12: true, hour: 'numeric', minute: 'numeric'}) + "<br>";
 
 		  		// totalHTML += (fromDate.getMonth() + 1) + "/" + fromDate.getDate() + "/" + fromDate.getFullYear() + " " + fromDate.getHours() + ":" + fromDate.getMinutes() + "  -  " + (toDate.getMonth() + 1) + "/" + toDate.getDate() + "/" + toDate.getFullYear() + " " + toDate.getHours() + ":" + toDate.getMinutes() + "<br>";
 		  	}
@@ -109,3 +109,8 @@ function snapshotToArray(snapshot) {
 
   return returnArr;
 };
+
+
+
+
+

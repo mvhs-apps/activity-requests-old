@@ -22,23 +22,23 @@
 		</script>
 
 	</head>
-	<body>
-		<div id="navigation">
+	<body style="min-height: 100%">
+		<div id="navigation" style="height: 10%">
 			<%- include templates/navbar.ejs %>
 		</div>
 		<link rel="stylesheet" type="text/css" href="/stylesheets/form.css">
 
-		<div style="background-color: rgb(216, 216, 216); padding: 20px;">
+		<div style="background-color: rgb(216, 216, 216); padding: 20px; min-height: 90%; display: inline-block; min-width: 100%; position: absolute;">
 			<h1 style="text-align: center">All Approvals</h1>
-			<div style="background: white; margin-top: 50px; padding: 70px; overflow: scroll;">
-				<table class="table table-bordered table-hover" style="white-space: nowrap;">
+			<div style="background: white; padding: 70px; overflow: scroll; position: absolute; min-height: calc(100% - 100px); max-width: calc(100% - 40px)">
+				<table class="table table-bordered table-hover" style="white-space: nowrap">
 				  <thead>
 				  	<tr>
 				      <th scope="col" colspan="8" style="text-align: center">General</th>
 				      <th scope="col" colspan="10" style="text-align: center">Campus</th>
 				      <th scope="col" colspan="3" style="text-align: center">Fundraiser</th>
 				    </tr>
-				    <tr>
+				    <tr hover>
 				      <th scope="col">Form #</th>
 				      <th scope="col">Name</th>
 				      <th scope="col">Club Name</th>
@@ -60,7 +60,6 @@
 				      <th scope="col">Setup Image</th>
 
 				      <th scope="col">Fundraiser Name</th>
-
 				    </tr>
 				  </thead>
 				  <tbody id="table">
