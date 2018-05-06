@@ -337,10 +337,9 @@ var removeDate = function(index) {
 
 
 
-
-
 var submitForm = function() {
 	// TODO validation!
+	
 	formObject = getObjectOfEntireForm();
 	firebase.database().ref('test/').push(formObject);
 }
