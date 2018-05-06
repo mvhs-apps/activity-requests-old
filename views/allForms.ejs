@@ -5,7 +5,7 @@
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Roboto:400,700|Material+Icons">
 		<meta content="width=device-width, initial-scale=1" name="viewport">
 
-		<title>New Approval</title>
+		<title>All Approvals</title>
 
 		<script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
 		<script>
@@ -30,8 +30,38 @@
 
 		<div style="background-color: rgb(216, 216, 216); padding: 20px;">
 			<h1 style="text-align: center">Welcome to Mountain View High School Approvals</h1>
-			<div style="background: white; margin-top: 50px; padding: 70px;">
-				
+			<div style="background: white; margin-top: 50px; padding: 70px; overflow: scroll;">
+				<table class="table table-bordered table-hover" style="white-space: nowrap;">
+				  <thead>
+				  	<tr>
+				      <th scope="col" colspan="7" style="text-align: center">General</th>
+				      <th scope="col" colspan="9" style="text-align: center">Campus</th>
+				      <th scope="col" colspan="3" style="text-align: center">Fundraiser</th>
+				    </tr>
+				    <tr>
+				      <th scope="col">Form #</th>
+				      <th scope="col">Name</th>
+				      <th scope="col">Club Name</th>
+				      <th scope="col">Email</th>
+				      <th scope="col">Club Advisor Email</th>
+				      <th scope="col">On Campus?</th>
+				      <th scope="col">Fundraiser?</th>
+
+				      <th scope="col">Gym/Fields?</th>
+				      <th scope="col">Cafeteria?</th>
+				      <th scope="col">Library?</th>
+				      <th scope="col">Classroom?</th>
+				      <th scope="col">Theater?</th>
+				      <th scope="col">Screens/Projector?</th>
+				      <th scope="col">Tables?</th>
+				      <th scope="col">Chairs?</th>
+				      <th scope="col">Cashboxes?</th>
+
+				    </tr>
+				  </thead>
+				  <tbody id="table">
+				  </tbody>
+				</table>
 			</div>
 		</div>
 		<script type="text/javascript" src="/js/allForms.js"></script>
