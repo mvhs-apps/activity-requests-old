@@ -7,6 +7,20 @@
 
 		<title>New Approval</title>
 
+		<script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+		<script>
+		  // Initialize Firebase
+		  var config = {
+		    apiKey: "AIzaSyDa5U-zlZrhgahLMVz8I_nEi3s5cp9t5jQ",
+		    authDomain: "mvhs-approvals.firebaseapp.com",
+		    databaseURL: "https://mvhs-approvals.firebaseio.com",
+		    projectId: "mvhs-approvals",
+		    storageBucket: "mvhs-approvals.appspot.com",
+		    messagingSenderId: "43618643962"
+		  };
+		  firebase.initializeApp(config);
+		</script>
+
 	</head>
 	<body>
 		<div id="navigation">
@@ -17,7 +31,7 @@
 		<div style="background-color: rgb(216, 216, 216); padding: 20px;">
 			<h1 style="text-align: center">Welcome to Mountain View High School Approvals</h1>
 			<div style="background: white; margin-top: 50px; padding: 70px;">
-				<h1 style="color: #373a3c; text-align: center; margin-bottom: 20px;">Fundraising Form</h1>
+				<h1 style="color: #373a3c; text-align: center; margin-bottom: 20px;">General Form</h1>
 				<p style="color: red;">NOTE: After you fill out this form, you will need to <span style="font-weight: bold; text-decoration: underline;">wait</span> for ASB approval before proceeding with the event — this form does not mean your activity is approved.</p>
 				<br>
 				<p style="color: red;">Fill out this form on a computer, if possible.</p>
@@ -441,6 +455,7 @@
 				</div>
 				<button onclick="submitForm()"></button>
 			</div>
+			<button onclick="submitForm();">Submit</button>
 		</div>
 		<script type="text/javascript" src="/js/form.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

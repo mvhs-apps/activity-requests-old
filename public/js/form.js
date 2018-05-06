@@ -219,6 +219,7 @@ var validateEmail = function(element, shouldEndWith) {
 
 }
 
+<<<<<<< HEAD
 var validateUrl = function(element) {
 	element.value = element.value.trim();
 
@@ -342,5 +343,5 @@ var removeDate = function(index) {
 var submitForm = function() {
 	// TODO validation!
 	formObject = getObjectOfEntireForm();
-	return formObject;
+	firebase.database().ref('test/').push(formObject);
 }

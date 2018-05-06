@@ -18,6 +18,10 @@ router.get('/trackForm', (req, res) => {
   res.render('trackForm');
 });
 
+router.get('/allForms', (req, res) => {
+  res.render('allForms');
+});
+
 router.post('/email', (req, res) => {
   console.log('sending');
   let id = 'asdfasdf';
