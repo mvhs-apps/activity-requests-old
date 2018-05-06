@@ -434,3 +434,26 @@ body {
 .remove-button:hover {
 	color: black;
 }
+
+
+.submit-button {
+	background: #fccb0b;
+	color: black;
+	border: none;
+	transition: 0.3s ease all;
+	display: block;
+	text-align: center;
+	vertical-align: middle;
+	padding: 10px 20px;
+	font-size: 24px;
+	border-radius: 4px;
+	user-select: none;
+	text-transform: uppercase;
+	outline: none;
+	width: 100%;
+}
+
+.submit-button:hover {
+	color: #fccb0b;
+	background: #404040;
+}

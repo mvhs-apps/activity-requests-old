@@ -219,7 +219,6 @@ var validateEmail = function(element, shouldEndWith) {
 
 }
 
-<<<<<<< HEAD
 var validateUrl = function(element) {
 	element.value = element.value.trim();
 
