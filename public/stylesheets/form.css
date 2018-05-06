@@ -59,6 +59,13 @@
 	display: inline-block;
 }
 
+.input-subtitle {
+	display: block;
+	color: rgb(95, 95, 95);
+	font-size: 13px;
+	margin-bottom: 18px;
+}
+
 .text-input > div, .select-input > div {
 	display: inline-block;
 }
@@ -105,23 +112,34 @@
 	padding: 0 10px 5px 0;
 	transition: all .2s ease;
 	font-size: 16px;
-	width: 300px;
 	outline: none;
-	height: 25px;
+	width: 300px;
+	height: 30px;
+	resize: none;
+	transition: all 0.4s ease;
+}
 
+.date-input .input-date {
+	border: none;
+	padding: 0 10px 5px 0;
+	outline: none;
+	border-radius: 0;
+	transition: all .2s ease;
+	border-bottom: 1px solid rgba(0,0,0,0.15);
+	font-size: 16px;
+	width: 40px;
+	text-align: center;
+	display: inline;
 }
-.text-input input::placeholder {
+
+.text-input input::placeholder, .text-input textarea::placeholder {
 	color: #757575;
 }
-.text-input input:focus {
+
+.text-input input:focus, .date-input .input-date:focus, .text-input textarea:focus {
 	border-bottom: 2px solid #4285f4;
 }
-.text-input textarea::placeholder {
-	color: #757575;
-}
-.text-input textarea:focus {
-	border-bottom: 2px solid #4285f4;
-}
+
 .text-input > .feedback {
 	display: none;
 	/*display: block;*/
@@ -133,7 +151,7 @@
 
 /* only select-input css */
 
-.select-input select {
+.select-input select, select {
 	display: block;
 	border: 2px solid #3367d6;
 	background: #fff;
@@ -252,4 +270,167 @@ section {
 }
 section h1 {
 	margin: 0 0 2em;
+}
+
+body {
+  background-color: #eee;
+}
+
+.showbox {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 5%;
+}
+
+.loader {
+  position: relative;
+  margin: 0 auto;
+  width: 100px;
+}
+.loader:before {
+  content: "";
+  display: block;
+  padding-top: 100%;
+}
+
+.circular {
+  animation: rotate 2s linear infinite;
+  height: 100%;
+  transform-origin: center center;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.path {
+  stroke-dasharray: 1, 200;
+  stroke-dashoffset: 0;
+  animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
+  stroke-linecap: round;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -35px;
+  }
+  100% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -124px;
+  }
+}
+@keyframes color {
+  100%, 0% {
+    stroke: #d62d20;
+  }
+  40% {
+    stroke: #0057e7;
+  }
+  66% {
+    stroke: #008744;
+  }
+  80%, 90% {
+    stroke: #ffa700;
+  }
+}
+
+
+.fake-button {
+	background: #fccb0b;
+	color: black;
+	border: none;
+	transition: 0.3s ease all;
+	display: block;
+	text-align: center;
+	vertical-align: middle;
+	padding: 10px 20px;
+	font-size: 14px;
+	border-radius: 4px;
+	user-select: none;
+	outline: none;
+}
+
+.fake-button:hover {
+	color: #fccb0b;
+	background: #404040;
+}
+
+
+
+.checklist-extension {
+	margin-left: 30px;
+	border: 2px solid #fccb0b;
+	padding: 15px;
+	border-radius: 6px;
+	display: none;
+}
+
+
+
+/* date stuff */
+.new-date-button {
+	background: rgb(235, 235, 235);
+	color: black;
+	border: none;
+	padding: 8px;
+	font-size: 15px;
+	border-radius: 4px;
+	outline: none;
+	transition: all 0.2s ease;
+}
+.new-date-button:hover {
+	box-shadow: 0 2px 5px 0 rgba(0,0,0,.2);
+}
+
+.green-done-button {
+	background: #5ca75c;
+	border-radius: 50%;
+	padding: 0;
+	color: white;
+	width: 40px;
+	height: 40px;
+	border: none;
+	font-size: 24px;
+	box-shadow: 0 6px 10px 0 rgba(0,0,0,0.14),0 1px 18px 0 rgba(0,0,0,0.12),0 3px 5px -1px rgba(0,0,0,0.2);
+}
+
+.green-done-button .material-icons {
+	vertical-align: sub;
+}
+.green-done-button:hover {
+	background: #6cbf6c;
+}
+
+.one-date {
+	background: rgb(230, 230, 230);
+	border-radius: 4px;
+	padding: 8px;
+}
+
+.remove-button {
+	font-size: 24px;
+	cursor: pointer;
+	transition: 0.2s ease all;
+}
+.remove-button i {
+	vertical-align: middle;
+}
+.remove-button:hover {
+	color: black;
 }

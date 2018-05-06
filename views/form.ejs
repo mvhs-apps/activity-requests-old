@@ -19,6 +19,8 @@
 			<div style="background: white; margin-top: 50px; padding: 70px;">
 				<h1 style="color: #373a3c; text-align: center; margin-bottom: 20px;">Fundraising Form</h1>
 				<p style="color: red;">NOTE: After you fill out this form, you will need to <span style="font-weight: bold; text-decoration: underline;">wait</span> for ASB approval before proceeding with the event — this form does not mean your activity is approved.</p>
+				<br>
+				<p style="color: red;">Fill out this form on a computer, if possible.</p>
 				<form id="main-form-part" onchange="formChangeHandler()">
 					<h1 class="form-section-title">General Questions</h1>
 					<div class="input-area">
@@ -50,6 +52,14 @@
 						</div>
 					</div>
 					<div class="input-area">
+						<div class="text-input">
+							<span class="input-title" style="margin-bottom: 0;">Write a brief description of your event/fundraiser</span>
+							<span class="input-subtitle">Try to stay under 75 words</span>
+							<textarea class="text-input" placeholder="Write here" name="event_description" onkeyup="document.getElementById('description-word-count').innerHTML = this.value.trim().split(' ').length" onblur="document.getElementById('description-word-count').innerHTML = this.value.trim().split(' ').length"></textarea>
+							<span class="feedback" style="display: block; color: rgb(95, 95, 95);"><span id="description-word-count">0</span> word(s)</span>
+						</div>
+					</div>
+					<div class="input-area">
 						<div class="select-input">
 							<span class="input-title">Is the event on campus?</span>
 							<div>
@@ -70,7 +80,7 @@
 								<option selected disabled>Select one</option>
 								<option value="yes">Yes</option>
 								<option value="no">No</option>
-							</select>       
+							</select>
 						</div>
 					</div>
 				</form>
@@ -83,45 +93,99 @@
 								<input type="checkbox" name="gym" id="gym-checkbox">
 								<label for="gym-checkbox">Gym/fields</label>
 							</div>
+							<div class="input-area checklist-extension" id="gym-checklist-extension">
+								<div class="text-input">
+									<span class="input-title">The gym coordinator <i>must</i> approve your use of the gym on this day. To do this, click the button below.</span>
+									<br>
+									<button class="fake-button">Click here to send an email requesting use to the gym coordinator</button>
+								</div>
+							</div>
 							<div class="md-checkbox">
 								<input type="checkbox" name="cafeteria" id="cafeteria-checkbox">
 								<label for="cafeteria-checkbox">Cafeteria</label>
+							</div>
+							<div class="input-area checklist-extension" id="cafeteria-checklist-extension">
+								<div class="text-input">
+									<span class="input-title">The cafeteria coordinator <i>must</i> approve your use of the cafeteria on this day. To do this, click the button below.</span>
+									<br>
+									<button class="fake-button">Click here to send an email requesting use to the cafeteria coordinator</button>
+								</div>
 							</div>
 							<div class="md-checkbox">
 								<input type="checkbox" name="library" id="library-checkbox">
 								<label for="library-checkbox">Library</label>
 							</div>
+							<div class="input-area checklist-extension" id="library-checklist-extension">
+								<div class="text-input">
+									<span class="input-title">The librarian <i>must</i> approve your use of the library on this day. To do this, click the button below.</span>
+									<br>
+									<button class="fake-button">Click here to send an email requesting use to the librarian</button>
+								</div>
+							</div>
 							<div class="md-checkbox">
 								<input type="checkbox" name="classroom" id="classroom-checkbox">
 								<label for="classroom-checkbox">Classroom</label>
+							</div>
+							<div class="input-area checklist-extension" id="classroom-checklist-extension">
+								<div class="text-input">
+									<span class="input-title">Which classrooms?</span>
+									<div>
+										<p class="hoverable"><i class="material-icons">help</i></p>
+										<div>Enter specific details including, but not limited to, room numbers and times.</div>
+									</div>
+									<textarea class="text-input" name="classroom-extra-info" placeholder="Write here"></textarea>
+									<span class="feedback"></span>
+								</div>
 							</div>
 							<div class="md-checkbox">
 								<input type="checkbox" name="theater" id="theater-checkbox">
 								<label for="theater-checkbox">Theater</label>
 							</div>
+							<div class="input-area checklist-extension" id="theater-checklist-extension">
+								<div class="text-input">
+									<span class="input-title" style="margin-bottom: 0;">Please fill out this form for theater use</span>
+									<span class="input-subtitle">Passoword is 'spartans'</span>
+									<br>
+									<a href="https://www.spartantheatermvhs.com/bookingmvla/" target="_blank">https://www.spartantheatermvhs.com/bookingmvla/</a>
+								</div>
+							</div>
 						</div>
 					</div>
-					<div class="input-area" style="display: none;" id="classroom-checklist-extension">
-						<div class="text-input">
-							<span class="input-title">Which classrooms?</span>
+					<div class="input-area">
+						<div class="select-input">
+							<span class="input-title" style="font-size: 22px;">Which part of campus most accurately describes the location of your event?</span>
 							<div>
 								<p class="hoverable"><i class="material-icons">help</i></p>
-								<div>Enter specific details including, but not limited to, room numbers and times.</div>
+								<div>If your location is not listed, please select the closet available option.</div>
 							</div>
-							<textarea type="text" name="classroom-extra-info" placeholder="Type here"></textarea>
-							<span class="feedback"></span>
-						</div>
-					</div>
-					<div class="input-area" style="display: none;" id="library-checklist-extension">
-						<div class="text-input">
-							<span class="input-title">We will send an email to the librarian confirming your use of the library.</span>
-						</div>
-					</div>
-					<div class="input-area" style="display: none;" id="theater-checklist-extension">
-						<div class="text-input">
-							<span class="input-title">Please fill out this form for theater use</span>
-							<br>
-							<a href="https://www.mvla.net/MVHS">https://www.mvla.net/MVHS/example-form-here.pdf</a>
+							<select name="location_on_campus">
+								<option selected disabled>Select one</option>
+								<option value="tennis_court_1">Tennis Court #1</option>
+								<option value="tennis_court_2">Tennis Court #2</option>
+								<option value="tennis_court_3">Tennis Court #3</option>
+								<option value="tennis_court_4">Tennis Court #4</option>
+								<option value="tennis_court_5">Tennis Court #5</option>
+								<option value="tennis_court_6">Tennis Court #6</option>
+								<option value="tennis_court_7">Tennis Court #7</option>
+								<option value="tennis_court_8">Tennis Court #8</option>
+								<option value="main_quad_1">Main Quad #1</option>
+								<option value="main_quad_2">Main Quad #2</option>
+								<option value="main_quad_3">Main Quad #3</option>
+								<option value="main_quad_4">Main Quad #4</option>
+								<option value="main_quad_5">Main Quad #5</option>
+								<option value="quad_redwood_grove">Quad Redwood Grove</option>
+								<option value="quad_theater_area">Quad Theater Area</option>
+								<option value="science_quad">Science Quad</option>
+								<option value="soccer_field_1">Soccer Field #1</option>
+								<option value="soccer_field_2">Soccer Field #2</option>
+								<option value="multi_use_field">Multi-Use Field</option>
+								<option value="100_wing">100 Wing</option>
+								<option value="200_wing">200 Wing</option>
+								<option value="300_wing">300 Wing</option>
+								<option value="400_wing">400 Wing</option>
+								<option value="500_wing">500 Wing</option>
+								<option value="600_wing">600 Wing</option>
+							</select>
 						</div>
 					</div>
 					<div class="input-area">
@@ -131,41 +195,46 @@
 								<input type="checkbox" name="screens" id="screens-checkbox">
 								<label for="screens-checkbox">Screens/projector</label>
 							</div>
+							<div class="input-area checklist-extension" id="screens-checklist-extension">
+								<div class="text-input">
+									<span class="input-title" style="margin-bottom: 0;">Quantity of projector(s)/screen(s)</span>
+									<span class="input-subtitle">Enter a number in the range 0 to 2</span>
+									<input type="number" min="0" max="2" name="screens-extra-info" onkeyup="validateNumber(this, 0, 2)" onblur="validateNumber(this, 0, 2)" placeholder="Number here">
+									<span class="feedback">Please enter a number in the range 0 to 2</span>
+								</div>
+							</div>
 							<div class="md-checkbox">
 								<input type="checkbox" name="tables" id="tables-checkbox">
 								<label for="tables-checkbox">Tables and/or chairs</label>
+							</div>
+							<div class="input-area checklist-extension" id="tables-checklist-extension">
+								<div class="text-input">
+									<span class="input-title" style="margin-bottom: 0;">Quantity of tables/chairs</span>
+									<span class="input-subtitle">Enter a number in the range 0 to 25</span>
+									<input type="number" min="0" max="25" name="tables-extra-info" onkeyup="validateNumber(this, 0, 25)" onblur="validateNumber(this, 0, 25)" placeholder="Number here">
+									<span class="feedback">Please enter a number in the range 0 to 25</span>
+								</div>
 							</div>
 							<div class="md-checkbox">
 								<input type="checkbox" name="cashboxes" id="cashboxes-checkbox">
 								<label for="cashboxes-checkbox">Cashboxes</label>
 							</div>
-						</div>
-					</div>
-					<div class="input-area" style="display: none;" id="screens-checklist-extension">
-						<div class="text-input">
-							<span class="input-title">Quantity of projector(s)/screen(s)</span>
-							<input type="number" min="0" max="2" name="screens-extra-info" onkeyup="validateNumber(this, 0, 2)" onblur="validateNumber(this, 0, 2)" placeholder="Number here">
-							<span class="feedback">Please enter a number in the range 0 to 2</span>
-						</div>
-					</div>
-					<div class="input-area" style="display: none;" id="tables-checklist-extension">
-						<div class="text-input">
-							<span class="input-title">Quantity of tables/chairs</span>
-							<input type="number" min="0" max="25" name="tables-extra-info" onkeyup="validateNumber(this, 0, 25)" onblur="validateNumber(this, 0, 25)" placeholder="Number here">
-							<span class="feedback">Please enter a number in the range 0 to 25</span>
-						</div>
-					</div>
-					<div class="input-area" style="display: none;" id="cashboxes-checklist-extension">
-						<div class="text-input">
-							<span class="input-title">How many cashboxes?</span>
-							<input type="number" name="cashboxes-extra-info" onkeyup="validateNumber(this, 0, 3)" onblur="validateNumber(this, 0, 3)" placeholder="Number here">
-							<span class="feedback">Please enter a number in the range 0 to 3</span>
+							<div class="input-area checklist-extension" id="cashboxes-checklist-extension">
+								<div class="text-input">
+									<span class="input-title" style="margin-bottom: 0;">How many cashboxes?</span>
+									<span class="input-subtitle">Enter a number in the range 0 to 3</span>
+									<input type="number" name="cashboxes-extra-info" onkeyup="validateNumber(this, 0, 3)" onblur="validateNumber(this, 0, 3)" placeholder="Number here">
+									<span class="feedback">Please enter a number in the range 0 to 3</span>
+								</div>
+							</div>
 						</div>
 					</div>
 					<div class="input-area">
 						<div class="text-input">
-							<span class="input-title">Please upload a drawing of your event's expected setup</span>
-							<input type="file" name="image-of-setup" placeholder="Upload here">
+							<span class="input-title" style="margin-bottom: 0;">Paste a link to your setup (optional)</span>
+							<span class="input-subtitle">Upload an image/drawing to Google Drive, change the sharing settings to "anyone with a link," and paste the link here.</span>
+							<input type="text" name="setup_image" onkeyup="validateUrl(this)" onblur="validateUrl(this)" placeholder="Paste link here">
+							<span class="feedback">Please enter a valid url</span>
 						</div>
 					</div>
 				</form>
@@ -173,47 +242,204 @@
 					<h1 class="form-section-title">Fundraiser Questions</h1>
 					<div class="input-area">
 						<div class="text-input">
-							<span class="input-title">Fundraiser questions go here</span>
-							<input type="text" name="name" placeholder="First and last">
-							<span class="feedback">First and last name please!</span>
-						</div>
-					</div>
-					<div class="input-area">
-						<div class="text-input">
-							<span class="input-title">Club Name</span>
-							<input type="text" name="name" placeholder="MVLA email">
-							<span class="feedback"></span>
-						</div>
-					</div>
-					<div class="input-area">
-						<div class="text-input">
-							<span class="input-title">Your Email</span>
-							<input type="text" name="name" placeholder="MVLA email">
-							<span class="feedback">Please enter a valid MVLA email</span>
-						</div>
-					</div>
-					<div class="input-area">
-						<div class="text-input">
-							<span class="input-title">Club Advisor Email</span>
-							<input type="text" name="name" placeholder="MVLA email">
-							<span class="feedback">Please enter a valid MVLA email</span>
+							<span class="input-title">What is the name of your fundraiser?</span>
+							<input type="text" name="fundraiser_name" placeholder="Type here">
 						</div>
 					</div>
 					<div class="input-area">
 						<div class="select-input">
-							<span class="input-title">Is the event on campus?</span>
-							<div>
-								<p class="hoverable"><i class="material-icons">help</i></p>
-								<div>Will this event take place on MVHS campus?</div>
-							</div>
-							<select>
+							<span class="input-title">Type of fundraiser</span>
+							<select name="is_fundraiser">
 								<option selected disabled>Select one</option>
-								<option value="1">Yes</option>
-								<option value="0">No</option>
+								<option value="restaurant">Restaurant</option>
+								<option value="donation_drive">Donation drive</option>
+								<option value="food_sales">Food Sales</option>
+								<option value="product">Non-Food Product Sale</option>
+								<option value="third_party_fundraiser">Third-party/Online Fundraiser</option>
 							</select>       
 						</div>
 					</div>
+					<div id="restaurant-questions-div">
+						<div class="input-area">
+							<div class="text-input">
+								<span class="input-title">What is the name of the restaurant?</span>
+								<input type="text" name="restaurant-name" placeholder="Type here">
+							</div>
+						</div>
+						<div class="input-area">
+							<div class="text-input">
+								<span class="input-title">What is the address of this restaurant?</span>
+								<input type="text" name="restaurant-address" placeholder="Type here">
+							</div>
+						</div>
+						<div class="input-area">
+							<div class="text-input">
+								<span class="input-title">The administration <i>must</i> approve this restaurant. To do this, click the button below.</span>
+								<br>
+								<button class="fake-button">Click here to send an email requesting approval from administration</button>
+							</div>
+						</div>
+					</div>
+					<div id="donation_drive-questions-div">
+						<div class="input-area">
+							<div class="text-input">
+								<span class="input-title" style="margin-bottom: 0;">Please list the items to be collected</span>
+								<span class="input-subtitle">Enter specific details, if possible</span>
+								<textarea class="text-input" name="donation_drive-items-to-be-collected" placeholder="Write here"></textarea>
+							</div>
+						</div>
+						<div class="input-area">
+							<div class="text-input">
+								<span class="input-title">Please list the name, address, and phone of the organization receiving the donation</span>
+								<textarea class="text-input" name="donation_drive-receiving-organization-information" placeholder="Write here"></textarea>
+							</div>
+						</div>
+						<div class="input-area">
+							<div class="text-input">
+								<span class="input-title" style="margin-bottom: 0;">How will you deliver the items to the receiving organization?</span>
+								<span class="input-subtitle">If you plan to pay a driver, how will you raise money?</span>
+								<textarea class="text-input" name="donation_drive-receiving-organization-delivery-plan" placeholder="Write here"></textarea>
+							</div>
+						</div>
+					</div>
+					<div id="food_sales-questions-div">
+						<div class="input-area">
+							<div class="text-input">
+								<span class="input-title" style="margin-bottom: 0;">Provide a thorough description of your product by answering the following</span>
+								<span class="input-subtitle">
+									What items will you purchase?<br>
+									What items will you make?<br>
+									What services will you purchase?<br>
+									What services will you provide?<br>
+								</span>
+								<textarea class="text-input" name="food_sales-product-description" placeholder="Write here"></textarea>
+							</div>
+						</div>
+						<div class="input-area">
+							<div class="text-input">
+								<span class="input-title">Expected costs</span><br>
+								$ <input type="number" style="display: inline;" name="food_sales-expected-costs" placeholder="Enter a number">
+							</div>
+						</div>
+						<div class="input-area">
+							<div class="text-input">
+								<span class="input-title">Expected items sold</span><br>
+								<input type="number" name="food_sales-expected-items-sold" placeholder="Enter a number">
+							</div>
+						</div>
+						<div class="input-area">
+							<div class="text-input">
+								<span class="input-title">Expected selling price</span><br>
+								$ <input type="number" style="display: inline;" name="food_sales-expected-selling-price" placeholder="Enter a number">
+							</div>
+						</div>
+						<div class="input-area">
+							<div class="text-input">
+								<span class="input-title">Expected income</span><br>
+								$ <input type="number" style="display: inline;" name="food_sales-expected-income" placeholder="Enter a number">
+							</div>
+						</div>
+						<div class="input-area">
+							<div class="text-input">
+								<span class="input-title">Food service <i>must</i> approve this fundraiser. To do this, click the button below.</span>
+								<br>
+								<button class="fake-button">Click here to send an email requesting approval from food service</button>
+							</div>
+						</div>
+					</div>
+					<div id="product-questions-div">
+						<div class="input-area">
+							<div class="text-input">
+								<span class="input-title" style="margin-bottom: 0;">Provide a thorough description of your product by answering the following</span>
+								<span class="input-subtitle">
+									What items will you purchase?<br>
+									What items will you make?<br>
+									What services will you purchase?<br>
+									What services will you provide?<br>
+								</span>
+								<textarea class="text-input" name="product-product-description" placeholder="Write here"></textarea>
+							</div>
+						</div>
+						<div class="input-area">
+							<div class="text-input">
+								<span class="input-title">Expected costs</span><br>
+								$ <input type="number" style="display: inline;" name="product-expected-costs" placeholder="Enter a number">
+							</div>
+						</div>
+						<div class="input-area">
+							<div class="text-input">
+								<span class="input-title">Expected items sold</span><br>
+								<input type="number" name="product-expected-items-sold" placeholder="Enter a number">
+							</div>
+						</div>
+						<div class="input-area">
+							<div class="text-input">
+								<span class="input-title">Expected selling price</span><br>
+								$ <input type="number" style="display: inline;" name="product-expected-selling-price" placeholder="Enter a number">
+							</div>
+						</div>
+						<div class="input-area">
+							<div class="text-input">
+								<span class="input-title">Expected income</span><br>
+								$ <input type="number" style="display: inline;" name="product-expected-income" placeholder="Enter a number">
+							</div>
+						</div>
+					</div>
+					<div id="third_party_fundraiser-questions-div">
+						<div class="input-area">
+							<div class="text-input">
+								<span class="input-title" style="margin-bottom: 0;">Paste a link to your online fundraising page</span>
+								<span class="input-subtitle">Ex: Snap Raise, Go Fund Me, etc.</span>
+								<input type="text" name="third_party_fundraiser-link" onkeyup="validateUrl(this)" onblur="validateUrl(this)" placeholder="Paste link here">
+								<span class="feedback">Please enter a valid url</span>
+							</div>
+						</div>
+						<div class="input-area">
+							<div class="text-input">
+								<span class="input-title">Sign your name electronically to show that you agree to the following</span>
+								<span class="input-subtitle" style="color: red; font-size: 15px;">I agree to a bunch of random legal stuff here</span>
+								<input type="text" name="third_party_fundraiser-e-signature" placeholder="First and last name">
+							</div>
+						</div>
+					</div>
 				</form>
+				<div class="input-area">
+					<div class="date-input">
+						<span class="input-title" style="margin-bottom: 0;">Date(s) of event</span>
+						<span class="input-subtitle">You can enter multiple dates</span>
+						<button class="new-date-button" onclick="addDate()"><i class="material-icons" style="font-size: 20px;">add_box</i> Add Date</button>
+						<br>
+						<br>
+						<div class="date-input-area" style="display: none;">
+							<input type="text" class="input-date" placeholder="MM" name="month">
+							/
+							<input type="text" placeholder="DD" class="input-date" name="day">
+							/
+							<input type="text" placeholder="YYYY" style="width: 60px;" class="input-date" name="year">
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-weight: bold; font-style: italic; font-size: 18px; border-bottom: 2px solid #fccb0b;">from</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="text" placeholder="HH" class="input-date" name="hours-1">
+							:
+							<input type="text" placeholder="MM" class="input-date" name="minute-1">
+							<select style="display: inline; width: 50px;" name="time-of-day-1">
+								<option selected>am</option>
+								<option>pm</option>
+							</select>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-weight: bold; font-style: italic; font-size: 18px; border-bottom: 2px solid #fccb0b;">to</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="text" placeholder="HH" class="input-date" name="hours-2">
+							:
+							<input type="text" placeholder="MM" class="input-date" name="minute-2">
+							<select style="display: inline; width: 50px;" name="time-of-day-2">
+								<option>am</option>
+								<option selected>pm</option>
+							</select>
+							<button class="green-done-button" onclick="saveDate()"><i class="material-icons">done</i></button>
+						</div>
+						<div id="all-the-dates">
+							
+						</div>
+					</div>
+				</div>
+				<button onclick="submitForm()"></button>
 			</div>
 		</div>
 		<script type="text/javascript" src="/js/form.js"></script>
