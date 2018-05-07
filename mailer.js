@@ -30,6 +30,6 @@ module.exports.sendMail = (data) => {
 
     transporter.sendMail(mailOptions).
         then(() => resolve()).
-        catch(() => reject());
+        catch((err) => reject(err));
   });
 };

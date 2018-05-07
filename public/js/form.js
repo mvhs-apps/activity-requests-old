@@ -335,11 +335,44 @@ var removeDate = function(index) {
 	}
 }
 
+function post(path, params, method) {
+    method = method || "post"; // Set method to post by default if not specified.
 
+    // The rest of this code assumes you are not using a library.
+    // It can be made less wordy if you use one.
+    var form = document.createElement("form");
+    form.setAttribute("method", method);
+    form.setAttribute("action", path);
+
+    for(var key in params) {
+        if(params.hasOwnProperty(key)) {
+            var hiddenField = document.createElement("input");
+            hiddenField.setAttribute("type", "hidden");
+            hiddenField.setAttribute("name", key);
+            hiddenField.setAttribute("value", params[key]);
+
+            form.appendChild(hiddenField);
+        }
+    }
+
+    document.body.appendChild(form);
+    form.submit();
+}
 
 var submitForm = function() {
 	// TODO validation!
-	
 	formObject = getObjectOfEntireForm();
-	firebase.database().ref('test/').push(formObject);
+	var formObject2 = formObject;
+	formObject2.recipient = formObject2.general.student_email;
+	formObject2.subject = "Confirmation for submitting your approval";
+	formObject2.message = "You have submitted an approval, you will hear back once your advisor approves.";
+
+	var formObject3 = formObject2;
+	formObject3.recipient = formObject3.general.advisor_email;
+	formObject3.subject = "A student is requesting your approval";
+	formObject3.message = formObject3.general.student_name + " has submitted an approval for " + formObject3.general.club_name + ". Please accept or reject the approval below.";
+
+	firebase.database().ref('test/').push(formObject);	
+	
+	post('email/', formObject3, 'post', function() {});
 }
