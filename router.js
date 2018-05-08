@@ -46,6 +46,33 @@ router.post('/email', (req, res) => {
   });
 });
 
+router.post('/submit_form', (req, res) => {
+
+  var formObject = JSON.parse(req.body.form_data);
+
+  console.log(formObject);
+
+  mailer.sendMail({
+    recipient: formObject.general.student_email,
+    subject: "Confirmation for submitting your approval",
+    messageHTML: "You have submitted an approval, you can track it's progress here: <a href='https://mvhs-approvals.herokuapp.com/track'>https://mvhs-approvals.herokuapp.com/track</a> using the id: '" + formObject.id_num + "'"
+  }).then((data) => {
+    mailer.sendMail({
+      recipient: formObject.general.advisor_email,
+      subject: "A student is requesting your approval",
+      messageHTML: formObject.general.student_name + " has submitted an approval for " + formObject.general.club_name + ". Please accept or reject the approval below.<br /><button><a href='https://mvhs-approvals.herokuapp.com/approve?" + formObject.id_num + "'>Accept</a></button><button><a href='https://mvhs-approvals.herokuapp.com/reject?" + formObject.id_num + "'>Reject</a></button>"
+    }).then((data) => {
+      res.json({
+        success: true
+      });
+    });
+  });
+
+
+
+
+});
+
 router.post('/');
 
 module.exports = router;

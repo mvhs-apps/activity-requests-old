@@ -9,6 +9,51 @@ var formObject;
 var dates = [];
 var willItAskForConfBeforeClosingTab = false;
 
+function ajax(param) {
+	return new Promise(function(resolve, reject) {
+		var xhr = new XMLHttpRequest();
+		if (!param.type) param.type = 'GET';
+		if (param.type != "GET") {
+			xhr.open(param.type, param.url, true);
+
+			if (param.processData != undefined && param.processData == false && param.contentType != undefined && param.contentType == false) {	
+			} else if (param.contentType != undefined || param.contentType == true) {
+				xhr.setRequestHeader('Content-Type', param.contentType);
+			} else {
+				xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+			}
+		} else {
+			xhr.open(param.type, param.url, true);
+		}
+		xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+		xhr.onerror = function () {
+			reject(xhr.responseText);
+		};
+		xhr.onload = function () {
+			if (xhr.status === 200) {
+				if (param.success) {
+					if (xhr.getResponseHeader("Content-Type").includes('application/json')) {
+						param.success(JSON.parse(xhr.responseText));
+					} else {
+						param.success(xhr.responseText);
+					}
+				}
+				if (xhr.getResponseHeader("Content-Type").includes('application/json')) {
+					resolve(JSON.parse(xhr.responseText));
+				} else {
+					resolve(xhr.responseText);
+				}
+			} else {
+				reject(xhr.responseText);
+			}
+		};
+		if (param.data != null || param.data != undefined) {
+			xhr.send(param.data);
+		} else {
+			xhr.send();
+		}
+	});
+}
 
 var getObjectOfEntireForm = function() {
 
@@ -334,7 +379,7 @@ var removeDate = function(index) {
 		$(`span[data-id="${index}"`).remove();
 	}
 }
-
+/*
 function post(path, params, method) {
     method = method || "post"; // Set method to post by default if not specified.
 
@@ -357,27 +402,45 @@ function post(path, params, method) {
 
     document.body.appendChild(form);
     form.submit();
-}
+}*/
 
 var submitForm = function() {
 	// TODO validation!
 	formObject = getObjectOfEntireForm();
-	var newPost = firebase.database().ref('test/').push(formObject);	
+
+
+	var newPost = firebase.database().ref('test/').push(formObject);
+	var idIndex = String(newPost).lastIndexOf('/');
+	var id = String(newPost).substr(idIndex + 1, newPost.length);
+	formObject.id_num = id;
+
+	// submits form to server
+	ajax({
+		url: '/submit_form',
+		type: "post",
+		data: 'form_data=' + encodeURIComponent(JSON.stringify(formObject))
+	}).then((data) => {
+		if (data.success) {
+			// do stuff when submitted to server
+
+		}
+	});
+
+	
 	console.log(newPost);
 
-	var formObject2 = formObject;
+/*	var formObject2 = formObject;
 	formObject2.recipient = formObject2.general.student_email;
 	formObject2.subject = "Confirmation for submitting your approval";
 	formObject2.message = "You have submitted an approval, you will hear back once your advisor approves.";
 
 	var formObject3 = formObject2;
 	formObject3.recipient = formObject3.general.advisor_email;
-	formObject3.subject = "A student is requesting your approval";
-	var idIndex = String(newPost).lastIndexOf('/');
-	var id = String(newPost).substr(idIndex + 1, newPost.length);
+	formObject3.subject = "A student is requesting your approval";*/
+	
 	console.log(id);
-	formObject3.message = formObject3.general.student_name + " has submitted an approval for " + formObject3.general.club_name + ". Please accept or reject the approval below.<br /><button><a href='https://mvhs-approvals.herokuapp.com/approve?" + id + "'>Accept</a></button><button><a href='https://mvhs-approvals.herokuapp.com/reject?" + id + "'>Reject</a></button>";
+	//formObject3.message = formObject3.general.student_name + " has submitted an approval for " + formObject3.general.club_name + ". Please accept or reject the approval below.<br /><button><a href='https://mvhs-approvals.herokuapp.com/approve?" + id + "'>Accept</a></button><button><a href='https://mvhs-approvals.herokuapp.com/reject?" + id + "'>Reject</a></button>";
 
 	
-	post('email/', formObject3, 'post', function() {});
+	//post('email/', formObject3, 'post', function() {});
 }
