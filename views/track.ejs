@@ -6,6 +6,20 @@
     <link rel="stylesheet" type="text/css" href="/stylesheets/form.css">
     <meta content="width=device-width, initial-scale=1" name="viewport">
 
+    <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyDa5U-zlZrhgahLMVz8I_nEi3s5cp9t5jQ",
+        authDomain: "mvhs-approvals.firebaseapp.com",
+        databaseURL: "https://mvhs-approvals.firebaseio.com",
+        projectId: "mvhs-approvals",
+        storageBucket: "mvhs-approvals.appspot.com",
+        messagingSenderId: "43618643962"
+      };
+      firebase.initializeApp(config);
+    </script>
+
     <title>Track Approval</title>
 
 </head>
@@ -14,17 +28,33 @@
 <div style="background-color: rgb(216, 216, 216); padding: 20px;">
     <h1 style="text-align: center">Welcome to Mountain View High School Approvals</h1>
     <div style="background: white; margin-top: 50px; padding: 70px;">
-        <div class="input-area">
-            <div class="text-input">
-                <span class="input-title">Tracking ID</span>
-                <input type="text" name="trackingId" id="trackingId" placeholder="">
+        <div id="inputId">
+            <div class="input-area">
+                <div class="text-input">
+                    <span class="input-title">Tracking ID</span>
+                    <input type="text" name="trackingId" id="trackingId" placeholder="">
+                </div>
+            </div>
+            <div class="submit">
+                <button class="submitButton" onclick="trackForm();">Track</button>
             </div>
         </div>
-        <div class="submit">
-            <button class="submitButton" onclick="trackForm();">Track</button>
+        <div id="trackingStatus">
+            <table class="table table-bordered table-hover" style="white-space: nowrap">
+                  <thead>
+                    <tr>
+                      <th scope="col">Club Advisor</th>
+                      <th scope="col">Library</th>
+                      <th scope="col">Etc.</th>
+                    </tr>
+                  </thead>
+                  <tbody id="table">
+                  </tbody>
+            </table>
         </div>
     </div>
 </div>
 <script type="text/javascript" src="/js/track.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </body>
 </html>
