@@ -362,6 +362,9 @@ function post(path, params, method) {
 var submitForm = function() {
 	// TODO validation!
 	formObject = getObjectOfEntireForm();
+	var newPost = firebase.database().ref('test/').push(formObject);	
+	console.log(newPost);
+
 	var formObject2 = formObject;
 	formObject2.recipient = formObject2.general.student_email;
 	formObject2.subject = "Confirmation for submitting your approval";
@@ -370,9 +373,11 @@ var submitForm = function() {
 	var formObject3 = formObject2;
 	formObject3.recipient = formObject3.general.advisor_email;
 	formObject3.subject = "A student is requesting your approval";
-	formObject3.message = formObject3.general.student_name + " has submitted an approval for " + formObject3.general.club_name + ". Please accept or reject the approval below.<button><a href='https://mvhs-approvals.herokuapp.com/approve'>Accept</a></button><button>Reject</button>";
+	var idIndex = String(newPost).lastIndexOf('/');
+	var id = String(newPost).substr(idIndex + 1, newPost.length);
+	console.log(id);
+	formObject3.message = formObject3.general.student_name + " has submitted an approval for " + formObject3.general.club_name + ". Please accept or reject the approval below.<br /><button><a href='https://mvhs-approvals.herokuapp.com/approve?" + id + "'>Accept</a></button><button><a href='https://mvhs-approvals.herokuapp.com/reject?" + id + "'>Reject</a></button>";
 
-	firebase.database().ref('test/').push(formObject);	
 	
 	post('email/', formObject3, 'post', function() {});
 }

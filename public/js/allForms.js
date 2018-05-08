@@ -28,6 +28,12 @@ window.onload = function() {
 	  	totalHTML += "<td>" + array[i]["general"]["event_on_campus"] + "</td>";
 	  	totalHTML += "<td>" + array[i]["general"]["is_fundraiser"] + "</td>";
 
+	  	if(array[i]["approvedClubAdvisor"] == undefined) {
+	  		totalHTML += "<td>pending</td>";
+	  	} else {
+	  		totalHTML += "<td>" + array[i]["approvedClubAdvisor"] + "</td>";
+	  	}
+
 
 	  	if(array[i]["general"]["event_on_campus"] == "yes") {
 	  		if(array[i]["campus"]["gym"] != undefined) {

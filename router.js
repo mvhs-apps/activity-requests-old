@@ -26,6 +26,10 @@ router.get('/approve', (req, res) => {
   res.render('approve');
 });
 
+router.get('/reject', (req, res) => {
+  res.render('reject');
+});
+
 router.post('/email', (req, res) => {
   console.log('sending');
   console.log('recipient: : ' + req.body.recipient);
