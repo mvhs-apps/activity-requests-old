@@ -370,7 +370,7 @@ var submitForm = function() {
 	var formObject3 = formObject2;
 	formObject3.recipient = formObject3.general.advisor_email;
 	formObject3.subject = "A student is requesting your approval";
-	formObject3.message = formObject3.general.student_name + " has submitted an approval for " + formObject3.general.club_name + ". Please accept or reject the approval below.";
+	formObject3.message = formObject3.general.student_name + " has submitted an approval for " + formObject3.general.club_name + ". Please accept or reject the approval below.<button><a href='https://mvhs-approvals.herokuapp.com/approve'>Accept</a></button><button>Reject</button>";
 
 	firebase.database().ref('test/').push(formObject);	
 	

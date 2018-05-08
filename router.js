@@ -22,6 +22,10 @@ router.get('/allForms', (req, res) => {
   res.render('allForms');
 });
 
+router.get('/approve', (req, res) => {
+  res.render('approve');
+});
+
 router.post('/email', (req, res) => {
   console.log('sending');
   console.log('recipient: : ' + req.body.recipient);
