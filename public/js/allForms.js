@@ -83,7 +83,7 @@ window.onload = function() {
 		  		totalHTML += "<td></td>";
 		  	}
 		  	if(array[i]["campus"]["setup_image"] != undefined) {
-		  		totalHTML += "<td><a href=\"" + array[i]["campus"]["setup_image"] + "\">Click Here</a></td>";
+		  		totalHTML += "<td><a href=\"http://" + array[i]["campus"]["setup_image"] + "\">Click Here</a></td>";
 		  	} else {
 		  		totalHTML += "<td></td>";
 		  	}
@@ -178,7 +178,7 @@ window.onload = function() {
 		  		totalHTML += "<td></td>";
 		  	}
 		  	if(array[i]["fundraiser"]["third_party_fundraiser-link"] != undefined) {
-		  		totalHTML += "<td><a href=\"" + array[i]["fundraiser"]["third_party_fundraiser-link"] + "\">Click Here</a></td>";
+		  		totalHTML += "<td><a href=\"http://" + array[i]["fundraiser"]["third_party_fundraiser-link"] + "\">Click Here</a></td>";
 		  	} else {
 		  		totalHTML += "<td></td>";
 		  	}
