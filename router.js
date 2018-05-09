@@ -62,6 +62,38 @@ router.post('/submit_form', (req, res) => {
       subject: "A student is requesting your approval",
       messageHTML: formObject.general.student_name + " has submitted an approval for " + formObject.general.club_name + ". Please accept or reject the approval below.<br /><button><a href='https://mvhs-approvals.herokuapp.com/approve?" + formObject.id_num + "'>Accept</a></button><button><a href='https://mvhs-approvals.herokuapp.com/reject?" + formObject.id_num + "'>Reject</a></button>"});
   }).then((data) => {
+    if(formObject.campus.cafeteria === true) {
+      return mailer.sendMail({
+        recipient: "paran.sonthalia@gmail.com",
+        subject: "cafeteria test",
+        messageHTML: "test"});
+    }
+    return;
+  }).then((data) => {
+    if(formObject.campus.gym === true) {
+      return mailer.sendMail({
+        recipient: "paran.sonthalia@gmail.com",
+        subject: "gym test",
+        messageHTML: "test"});
+    }
+    return;
+  }).then((data) => {
+    if(formObject.campus.library === true) {
+      return mailer.sendMail({
+        recipient: "paran.sonthalia@gmail.com",
+        subject: "library test",
+        messageHTML: "test"});
+    }
+    return;
+  }).then((data) => {
+    if(formObject.campus.ccc === true) {
+      return mailer.sendMail({
+        recipient: "paran.sonthalia@gmail.com",
+        subject: "ccc test",
+        messageHTML: "test"});
+    }
+    return;
+  }).then((data) => {
     res.json({
       success: true
     });
