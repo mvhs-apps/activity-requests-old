@@ -53,6 +53,11 @@ window.onload = function() {
 	  	} else {
 	  		totalHTML += "<td>" + array[i]["approvedCCC"] + "</td>";
 	  	}
+	  	if(array[i]["approvedASB"] == undefined) {
+	  		totalHTML += "<td>pending</td>";
+	  	} else {
+	  		totalHTML += "<td>" + array[i]["approvedASB"] + "</td>";
+	  	}
 
 
 	  	if(array[i]["general"]["event_on_campus"] == "yes") {
