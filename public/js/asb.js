@@ -69,8 +69,8 @@ function decline() {
 function loadNextApproval() {
 	if (allUnapprovedApprovals[0] !== undefined) {
 	    if (allUnapprovedApprovals[0]["general"] !== undefined) {
-	        $("#orgName").text("Organization Name: " + allUnapprovedApprovals[0]["general"]["club_name"]);
-	        $("#evName").text("Event Description: " + allUnapprovedApprovals[0]["general"]["event_description"]);
+	        $("#orgName").text("Who: " + allUnapprovedApprovals[0]["general"]["club_name"]);
+	        $("#evName").text("What: " + allUnapprovedApprovals[0]["general"]["event_description"]);
 	    }
 	    var dates = "";
 	    if (allUnapprovedApprovals[0]["dates"] !== undefined) {
@@ -97,9 +97,9 @@ function loadNextApproval() {
 
 	        }
 	    }
-	    $("#date").html("Dates: " + dates);
+	    $("#date").html("When: " + dates);
 	    if (allUnapprovedApprovals[0]["campus"] !== undefined) {
-	        $("#location").text("Location: " + allUnapprovedApprovals[0]["campus"]["location_on_campus"]);
+	        $("#location").text("Where: " + allUnapprovedApprovals[0]["campus"]["location_on_campus"]);
 	    }
 	} else {
 		$("#date").text("NONE");
