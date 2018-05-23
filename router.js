@@ -1,42 +1,33 @@
 let express = require('express');
 let router = express.Router();
 const mailer = require('./mailer');
-//const generateMail = require('./generateMail'); <- not ready for use
 
 router.get('/', (req, res) => {
-	res.render('index');
+  res.render('index');
 });
 
 router.get('/form', (req, res) => {
-	res.render('form');
+  res.render('form');
 });
 
 router.get('/track', (req, res) => {
-	res.render('track');
+  res.render('track');
 });
 
 router.get('/trackForm', (req, res) => {
-	res.render('trackForm');
+  res.render('trackForm');
 });
 
 router.get('/allForms', (req, res) => {
-	res.render('allForms');
+  res.render('allForms');
 });
 
 router.get('/approve', (req, res) => {
-	res.render('approve');
-});
-
-router.get('/approve/:person/:id', (req, res) => {
-	res.render('approve');
+  res.render('approve');
 });
 
 router.get('/reject', (req, res) => {
-	res.render('reject');
-});
-
-router.get('/reject/:person/:id', (req, res) => {
-	res.render('reject');
+  res.render('reject');
 });
 
 router.get('/asb', (req, res) => {
@@ -66,65 +57,65 @@ router.post('/submit_form', (req, res) => {
   let studentEmail = mailer.sendMail({
     recipient: formObject.general.student_email,
     subject: 'Confirmation for submitting your approval',
-    messageHTML: '<center><div style="width: 90%; background-color: #f4f4f4"><p style="font-size: 30px">You have submitted an approval, you can track it\'s progress here: <a href=\'https://mvhs-approvals.herokuapp.com/track\'>https://mvhs-approvals.herokuapp.com/track</a> using the id: \'' +
-    formObject.id_num + '\'' + '</p></div></center>',
+    messageHTML: 'You have submitted an approval, you can track it\'s progress here: <a href=\'localhost:8080/track\'>localhost:8080/track</a> using the id: \'' +
+    formObject.id_num + '\'',
   });
   let advisorEmail = mailer.sendMail({
     recipient: formObject.general.advisor_email,
     subject: 'A student is requesting your approval',
-    messageHTML: '<center><div style="width: 90%; background-color: #f4f4f4"><p style="text-align: center; font-size: 30px;">' + formObject.general.student_name +
+    messageHTML: formObject.general.student_name +
     ' has submitted an approval for ' + formObject.general.club_name +
-    '. Please accept or reject the approval below.</p><br /><center><button style="background-color: green; width: 200px; font-size: 15px; height: 100px"><a href=\'https://mvhs-approvals.herokuapp.com/approve/' +
+    '. Please accept or reject the approval below.<br /><button><a href=\'localhost:8080/approve?' +
     formObject.id_num +
-    '/clubAdvisor\'><p style="font-size: 25px; color: black">Accept</p></a></button><button style="background-color: red; width: 200px; font-size: 15px; height: 100px"><a href=\'https://mvhs-approvals.herokuapp.com/reject/' +
-    formObject.id_num + '/clubAdvisor\'><p style="font-size: 25px; color: black">Reject</p></a></button></center>' + '</div></center>',
+    '?clubAdvisor\'>Accept</a></button><button><a href=\'localhost:8080/reject?' +
+    formObject.id_num + '?clubAdvisor\'>Reject</a></button>',
   });
   let cafeterialEmail = (formObject.campus.cafeteria === true)
       ? mailer.sendMail({
         recipient: 'paran.sonthalia@gmail.com',
         subject: 'A student is requesting your approval for use of the Cafeteria',
-        messageHTML: '<center><div style="width: 90%; background-color: #f4f4f4"><p style="text-align: center; font-size: 30px;">' + formObject.general.student_name +
+        messageHTML: formObject.general.student_name +
         ' has submitted an approval for ' + formObject.general.club_name +
-        '. Please accept or reject the approval below.</p><br /><center><button style="background-color: green; width: 200px; font-size: 15px; height: 100px"><a href=\'https://mvhs-approvals.herokuapp.com/approve/' +
+        '. Please accept or reject the approval below.<br /><button><a href=\'localhost:8080/approve?' +
         formObject.id_num +
-        '/cafeteria\'><p style="font-size: 25px; color: black">Accept</p></a></button><button style="background-color: red; width: 200px; font-size: 15px; height: 100px"><a href=\'https://mvhs-approvals.herokuapp.com/reject/' +
-        formObject.id_num + '/cafeteria\'><p style="font-size: 25px; color: black">Reject</p></a></button></center>' + '</div></center>',
+        '?cafeteria\'>Accept</a></button><button><a href=\'localhost:8080/reject?' +
+        formObject.id_num + '?cafeteria\'>Reject</a></button>',
       })
       : Promise.resolve();
   let gymEmail = (formObject.campus.gym === true)
       ? mailer.sendMail({
         recipient: 'paran.sonthalia@gmail.com',
         subject: 'A student is requesting your approval for use of the Gym',
-        messageHTML: '<center><div style="width: 90%; background-color: #f4f4f4"><p style="text-align: center; font-size: 30px;">' + formObject.general.student_name +
+        messageHTML: formObject.general.student_name +
         ' has submitted an approval for ' + formObject.general.club_name +
-        '. Please accept or reject the approval below.</p><br /><center><button style="background-color: green; width: 200px; font-size: 15px; height: 100px"><a href=\'https://mvhs-approvals.herokuapp.com/approve/' +
+        '. Please accept or reject the approval below.<br /><button><a href=\'localhost:8080/approve?' +
         formObject.id_num +
-        '/gym\'><p style="font-size: 25px; color: black">Accept</p></a></button><button style="background-color: red; width: 200px; font-size: 15px; height: 100px"><a href=\'https://mvhs-approvals.herokuapp.com/reject/' +
-        formObject.id_num + '/gym\'><p style="font-size: 25px; color: black">Reject</p></a></button></center>' + '</div></center>',
+        '?gym\'>Accept</a></button><button><a href=\'localhost:8080/reject?' +
+        formObject.id_num + '?gym\'>Reject</a></button>',
       })
       : Promise.resolve();
   let libraryEmail = (formObject.campus.library === true)
       ? mailer.sendMail({
         recipient: 'paran.sonthalia@gmail.com',
         subject: 'A student is requesting your approval for use of the library',
-        messageHTML: '<center><div style="width: 90%; background-color: #f4f4f4"><p style="text-align: center; font-size: 30px;">' + formObject.general.student_name +
+        messageHTML: formObject.general.student_name +
         ' has submitted an approval for ' + formObject.general.club_name +
-        '. Please accept or reject the approval below.</p><br /><center><button style="background-color: green; width: 200px; font-size: 15px; height: 100px"><a href=\'https://mvhs-approvals.herokuapp.com/approve/' +
+        '. Please accept or reject the approval below.<br /><button><a href=\'localhost:8080/approve?' +
         formObject.id_num +
-        '/library\'><p style="font-size: 25px; color: black">Accept</p></a></button><button style="background-color: red; width: 200px; font-size: 15px; height: 100px"><a href=\'https://mvhs-approvals.herokuapp.com/reject/' +
-        formObject.id_num + '/library\'><p style="font-size: 25px; color: black">Reject</p></a></button></center>' + '</div></center>',
+        '?library\'>Accept</a></button><button><a href=\'localhost:8080/reject?' +
+        formObject.id_num + '?library\'>Reject</a></button>',
       })
       : Promise.resolve();
   let cccEmail = (formObject.campus.ccc === true)
       ? mailer.sendMail({
         recipient: 'paran.sonthalia@gmail.com',
         subject: 'A student is requesting your approval for use of the College and Career Center',
-        messageHTML: '<center><div style="width: 90%; background-color: #f4f4f4"><p style="text-align: center; font-size: 30px;">' + formObject.general.student_name +
+        messageHTML: formObject.general.student_name +
         ' has submitted an approval for ' + formObject.general.club_name +
-        '. Please accept or reject the approval below.</p><br /><center><button style="background-color: green; width: 200px; font-size: 15px; height: 100px"><a href=\'https://mvhs-approvals.herokuapp.com/approve/' +
+        '. Please accept or reject the approval below.<br /><button><a href=\'localhost:8080/approve?' +
         formObject.id_num +
-        '/ccc\'><p style="font-size: 25px; color: black">Accept</p></a></button><button style="background-color: red; width: 200px; font-size: 15px; height: 100px"><a href=\'https://mvhs-approvals.herokuapp.com/reject/' +
-        formObject.id_num + '/ccc\'><p style="font-size: 25px; color: black">Reject</p></a></button></center>' + '</div></center>',
+        '?ccc\'>Accept</a></button><button><a href=\'localhost:8080/reject?' +
+        formObject.id_num + '?ccc\'>Reject</a></button>',
       })
       : Promise.resolve();
 
