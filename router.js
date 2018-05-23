@@ -81,7 +81,7 @@ router.post('/submit_form', (req, res) => {
   });
   let cafeterialEmail = (formObject.campus.cafeteria === true)
       ? mailer.sendMail({
-        recipient: 'paran.sonthalia@gmail.com',
+        recipient: '100017649@mvla.net',
         subject: 'A student is requesting your approval for use of the Cafeteria',
         messageHTML: formObject.general.student_name +
         ' has submitted an approval for ' + formObject.general.club_name +
@@ -93,7 +93,7 @@ router.post('/submit_form', (req, res) => {
       : Promise.resolve();
   let gymEmail = (formObject.campus.gym === true)
       ? mailer.sendMail({
-        recipient: 'paran.sonthalia@gmail.com',
+        recipient: '100017649@mvla.net',
         subject: 'A student is requesting your approval for use of the Gym',
         messageHTML: formObject.general.student_name +
         ' has submitted an approval for ' + formObject.general.club_name +
@@ -105,7 +105,7 @@ router.post('/submit_form', (req, res) => {
       : Promise.resolve();
   let libraryEmail = (formObject.campus.library === true)
       ? mailer.sendMail({
-        recipient: 'paran.sonthalia@gmail.com',
+        recipient: '100017649@mvla.net',
         subject: 'A student is requesting your approval for use of the library',
         messageHTML: formObject.general.student_name +
         ' has submitted an approval for ' + formObject.general.club_name +
@@ -117,7 +117,7 @@ router.post('/submit_form', (req, res) => {
       : Promise.resolve();
   let cccEmail = (formObject.campus.ccc === true)
       ? mailer.sendMail({
-        recipient: 'paran.sonthalia@gmail.com',
+        recipient: '100017649@mvla.net',
         subject: 'A student is requesting your approval for use of the College and Career Center',
         messageHTML: formObject.general.student_name +
         ' has submitted an approval for ' + formObject.general.club_name +

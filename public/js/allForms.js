@@ -33,6 +33,26 @@ window.onload = function() {
 	  	} else {
 	  		totalHTML += "<td>" + array[i]["approvedClubAdvisor"] + "</td>";
 	  	}
+	  	if(array[i]["approvedLibrary"] == undefined) {
+	  		totalHTML += "<td>pending</td>";
+	  	} else {
+	  		totalHTML += "<td>" + array[i]["approvedLibrary"] + "</td>";
+	  	}
+	  	if(array[i]["approvedGym"] == undefined) {
+	  		totalHTML += "<td>pending</td>";
+	  	} else {
+	  		totalHTML += "<td>" + array[i]["approvedGym"] + "</td>";
+	  	}
+	  	if(array[i]["approvedCafeteria"] == undefined) {
+	  		totalHTML += "<td>pending</td>";
+	  	} else {
+	  		totalHTML += "<td>" + array[i]["approvedCafeteria"] + "</td>";
+	  	}
+	  	if(array[i]["approvedCCC"] == undefined) {
+	  		totalHTML += "<td>pending</td>";
+	  	} else {
+	  		totalHTML += "<td>" + array[i]["approvedCCC"] + "</td>";
+	  	}
 
 
 	  	if(array[i]["general"]["event_on_campus"] == "yes") {
