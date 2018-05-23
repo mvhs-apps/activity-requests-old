@@ -2,7 +2,7 @@ window.onload = function() {
 	var path = window.location.pathname.split('/');
 	if(path[1] && path[2]) {
 
-		console.log(path[2]);
+		console.log(path[1]);
 
 		switch (path[1]) {
 			case 'clubAdvisor':
