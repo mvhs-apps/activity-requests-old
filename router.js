@@ -30,6 +30,10 @@ router.get('/reject', (req, res) => {
   res.render('reject');
 });
 
+router.get('/asb', (req, res) => {
+  res.render('asb');
+});
+
 router.post('/email', (req, res) => {
   console.log('sending');
   console.log('recipient: : ' + req.body.recipient);
