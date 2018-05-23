@@ -212,7 +212,9 @@
 								<div class="text-input">
 									<span class="input-title" style="margin-bottom: 0;">Quantity of projector(s)/screen(s)</span>
 									<span class="input-subtitle">Enter a number in the range 0 to 2</span>
-									<input type="number" min="0" max="2" name="screens-extra-info" onkeyup="validateNumber(this, 0, 2)" onblur="validateNumber(this, 0, 2)" placeholder="Number here">
+									<input type="number" min="0" max="2" name="screens-extra-info"
+										   onkeyup="validateInt(this, 0, 2)" onblur="validateInt(this, 0, 2)"
+										   placeholder="Number here">
 									<span class="feedback">Please enter a number in the range 0 to 2</span>
 								</div>
 							</div>
@@ -224,7 +226,9 @@
 								<div class="text-input">
 									<span class="input-title" style="margin-bottom: 0;">Quantity of tables/chairs</span>
 									<span class="input-subtitle">Enter a number in the range 0 to 25</span>
-									<input type="number" min="0" max="25" name="tables-extra-info" onkeyup="validateNumber(this, 0, 25)" onblur="validateNumber(this, 0, 25)" placeholder="Number here">
+									<input type="number" min="0" max="25" name="tables-extra-info"
+										   onkeyup="validateInt(this, 0, 25)" onblur="validateInt(this, 0, 25)"
+										   placeholder="Number here">
 									<span class="feedback">Please enter a number in the range 0 to 25</span>
 								</div>
 							</div>
@@ -236,7 +240,8 @@
 								<div class="text-input">
 									<span class="input-title" style="margin-bottom: 0;">How many cashboxes?</span>
 									<span class="input-subtitle">Enter a number in the range 0 to 3</span>
-									<input type="number" name="cashboxes-extra-info" onkeyup="validateNumber(this, 0, 3)" onblur="validateNumber(this, 0, 3)" placeholder="Number here">
+									<input type="number" name="cashboxes-extra-info" onkeyup="validateInt(this, 0, 3)"
+										   onblur="validateInt(this, 0, 3)" placeholder="Number here">
 									<span class="feedback">Please enter a number in the range 0 to 3</span>
 								</div>
 							</div>
