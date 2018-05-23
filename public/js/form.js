@@ -404,7 +404,7 @@ function post(path, params, method) {
     form.submit();
 }*/
 
-var submitForm = function() {
+var submitForm = function(element) {
 	// TODO validation!
 	formObject = getObjectOfEntireForm();
 
@@ -415,6 +415,7 @@ var submitForm = function() {
 	formObject.id_num = id;
 
 	// submits form to server
+	element.innerHTML = 'Sending...<div class="loader" style="width: 50px;"><svg class=\"circular\" viewBox=\"25 25 50 50\"><circle class=\"path\" cx=\"50\" cy=\"50\" r=\"20\" fill=\"none\" stroke-width=\"2\" stroke-miterlimit=\"10\"\/><\/svg></div>';
 	ajax({
 		url: '/submit_form',
 		type: "post",
@@ -422,25 +423,10 @@ var submitForm = function() {
 	}).then((data) => {
 		if (data.success) {
 			// do stuff when submitted to server
-
+			document.getElementById('main-form-area-part-thing').innerHTML = "Your approval was submitted!";
 		}
 	});
 
 	
 	console.log(newPost);
-
-/*	var formObject2 = formObject;
-	formObject2.recipient = formObject2.general.student_email;
-	formObject2.subject = "Confirmation for submitting your approval";
-	formObject2.message = "You have submitted an approval, you will hear back once your advisor approves.";
-
-	var formObject3 = formObject2;
-	formObject3.recipient = formObject3.general.advisor_email;
-	formObject3.subject = "A student is requesting your approval";*/
-	
-	console.log(id);
-	//formObject3.message = formObject3.general.student_name + " has submitted an approval for " + formObject3.general.club_name + ". Please accept or reject the approval below.<br /><button><a href='https://mvhs-approvals.herokuapp.com/approve?" + id + "'>Accept</a></button><button><a href='https://mvhs-approvals.herokuapp.com/reject?" + id + "'>Reject</a></button>";
-
-	
-	//post('email/', formObject3, 'post', function() {});
 }

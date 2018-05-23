@@ -1,27 +1,26 @@
 window.onload = function() {
-	var link = String(window.location.href);
-	if(link.indexOf("?") != -1) {
-		var endOfLink = link.substr(link.indexOf("?") + 1, link.length);
-		var nameOfApproval = endOfLink.substr(endOfLink.indexOf("?") + 1, endOfLink.length);
-		var id = endOfLink.substr(0, endOfLink.indexOf("?"));
+	var path = window.location.pathname.split('/');
+	if(path[1] && path[2]) {
 
-		if(nameOfApproval === "clubAdvisor") {
-			firebase.database().ref('test/' + id + "/approvedClubAdvisor").set("approved");
-		}
-		else if(nameOfApproval === "cafeteria") {
-			firebase.database().ref('test/' + id + "/approvedCafeteria").set("approved");
-		}
-		else if(nameOfApproval === "gym") {
-			firebase.database().ref('test/' + id + "/approvedGym").set("approved");
-		}
-		else if(nameOfApproval === "library") {
-			firebase.database().ref('test/' + id + "/approvedLibrary").set("approved");
-		}
-		else if(nameOfApproval === "ccc") {
-			firebase.database().ref('test/' + id + "/approvedCCC").set("approved");
-		}
-		else if(nameOfApproval === "ASB") {
-			firebase.database().ref('test/' + id + "/approvedASB").set("approved");
+		switch (path[1]) {
+			case 'clubAdvisor':
+				firebase.database().ref('test/' + path[2] + "/approvedClubAdvisor").set("approved");
+				break;
+			case "cafeteria":
+				firebase.database().ref('test/' + path[2] + "/approvedCafeteria").set("approved");
+				break;
+			case "gym":
+				firebase.database().ref('test/' + path[2] + "/approvedGym").set("approved");
+				break;
+			case "library":
+				firebase.database().ref('test/' + path[2] + "/approvedLibrary").set("approved");
+				break;
+			case "ccc":
+				firebase.database().ref('test/' + path[2] + "/approvedCCC").set("approved");
+				break;
+			case "ASB":
+				firebase.database().ref('test/' + path[2] + "/approvedASB").set("approved");
+				break;
 		}
 	}	
 }
