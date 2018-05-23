@@ -74,10 +74,10 @@ router.post('/submit_form', (req, res) => {
     subject: 'A student is requesting your approval',
     messageHTML: '<div style="width: 900px; background-color: gray">' + formObject.general.student_name +
     ' has submitted an approval for ' + formObject.general.club_name +
-    '. Please accept or reject the approval below.<br /><button style="background-color: green"><a href=\'https://mvhs-approvals.herokuapp.com/approve?' +
+    '. Please accept or reject the approval below.<br /><button style="background-color: green"><a href=\'https://mvhs-approvals.herokuapp.com/approve/' +
     formObject.id_num +
-    '?clubAdvisor\'>Accept</a></button><button><a href=\'https://mvhs-approvals.herokuapp.com/reject?' +
-    formObject.id_num + '?clubAdvisor\'>Reject</a></button>' + '</div>',
+    '/clubAdvisor\'>Accept</a></button><button><a href=\'https://mvhs-approvals.herokuapp.com/reject/' +
+    formObject.id_num + '/clubAdvisor\'>Reject</a></button>' + '</div>',
   });
   let cafeterialEmail = (formObject.campus.cafeteria === true)
       ? mailer.sendMail({
@@ -85,10 +85,10 @@ router.post('/submit_form', (req, res) => {
         subject: 'A student is requesting your approval for use of the Cafeteria',
         messageHTML: formObject.general.student_name +
         ' has submitted an approval for ' + formObject.general.club_name +
-        '. Please accept or reject the approval below.<br /><button><a href=\'https://mvhs-approvals.herokuapp.com/approve?' +
+        '. Please accept or reject the approval below.<br /><button><a href=\'https://mvhs-approvals.herokuapp.com/approve/' +
         formObject.id_num +
-        '?cafeteria\'>Accept</a></button><button><a href=\'https://mvhs-approvals.herokuapp.com/reject?' +
-        formObject.id_num + '?cafeteria\'>Reject</a></button>',
+        '/cafeteria\'>Accept</a></button><button><a href=\'https://mvhs-approvals.herokuapp.com/reject/' +
+        formObject.id_num + '/cafeteria\'>Reject</a></button>',
       })
       : Promise.resolve();
   let gymEmail = (formObject.campus.gym === true)
@@ -97,10 +97,10 @@ router.post('/submit_form', (req, res) => {
         subject: 'A student is requesting your approval for use of the Gym',
         messageHTML: formObject.general.student_name +
         ' has submitted an approval for ' + formObject.general.club_name +
-        '. Please accept or reject the approval below.<br /><button><a href=\'https://mvhs-approvals.herokuapp.com/approve?' +
+        '. Please accept or reject the approval below.<br /><button><a href=\'https://mvhs-approvals.herokuapp.com/approve/' +
         formObject.id_num +
-        '?gym\'>Accept</a></button><button><a href=\'https://mvhs-approvals.herokuapp.com/reject?' +
-        formObject.id_num + '?gym\'>Reject</a></button>',
+        '/gym\'>Accept</a></button><button><a href=\'https://mvhs-approvals.herokuapp.com/reject/' +
+        formObject.id_num + '/gym\'>Reject</a></button>',
       })
       : Promise.resolve();
   let libraryEmail = (formObject.campus.library === true)
@@ -109,10 +109,10 @@ router.post('/submit_form', (req, res) => {
         subject: 'A student is requesting your approval for use of the library',
         messageHTML: formObject.general.student_name +
         ' has submitted an approval for ' + formObject.general.club_name +
-        '. Please accept or reject the approval below.<br /><button><a href=\'https://mvhs-approvals.herokuapp.com/approve?' +
+        '. Please accept or reject the approval below.<br /><button><a href=\'https://mvhs-approvals.herokuapp.com/approve/' +
         formObject.id_num +
-        '?library\'>Accept</a></button><button><a href=\'https://mvhs-approvals.herokuapp.com/reject?' +
-        formObject.id_num + '?library\'>Reject</a></button>',
+        '/library\'>Accept</a></button><button><a href=\'https://mvhs-approvals.herokuapp.com/reject/' +
+        formObject.id_num + '/library\'>Reject</a></button>',
       })
       : Promise.resolve();
   let cccEmail = (formObject.campus.ccc === true)
@@ -121,10 +121,10 @@ router.post('/submit_form', (req, res) => {
         subject: 'A student is requesting your approval for use of the College and Career Center',
         messageHTML: formObject.general.student_name +
         ' has submitted an approval for ' + formObject.general.club_name +
-        '. Please accept or reject the approval below.<br /><button><a href=\'https://mvhs-approvals.herokuapp.com/approve?' +
+        '. Please accept or reject the approval below.<br /><button><a href=\'https://mvhs-approvals.herokuapp.com/approve/' +
         formObject.id_num +
-        '?ccc\'>Accept</a></button><button><a href=\'https://mvhs-approvals.herokuapp.com/reject?' +
-        formObject.id_num + '?ccc\'>Reject</a></button>',
+        '/ccc\'>Accept</a></button><button><a href=\'https://mvhs-approvals.herokuapp.com/reject/' +
+        formObject.id_num + '/ccc\'>Reject</a></button>',
       })
       : Promise.resolve();
 

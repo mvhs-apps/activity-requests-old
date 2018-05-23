@@ -2,9 +2,12 @@ window.onload = function() {
 	var path = window.location.pathname.split('/');
 	if(path[1] && path[2]) {
 
+		console.log(path[2]);
+
 		switch (path[1]) {
 			case 'clubAdvisor':
 				firebase.database().ref('test/' + path[2] + "/approvedClubAdvisor").set("approved");
+				console.log("asdf");
 				break;
 			case "cafeteria":
 				firebase.database().ref('test/' + path[2] + "/approvedCafeteria").set("approved");
