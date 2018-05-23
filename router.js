@@ -1,33 +1,42 @@
 let express = require('express');
 let router = express.Router();
 const mailer = require('./mailer');
+//const generateMail = require('./generateMail'); <- not ready for use
 
 router.get('/', (req, res) => {
-  res.render('index');
+	res.render('index');
 });
 
 router.get('/form', (req, res) => {
-  res.render('form');
+	res.render('form');
 });
 
 router.get('/track', (req, res) => {
-  res.render('track');
+	res.render('track');
 });
 
 router.get('/trackForm', (req, res) => {
-  res.render('trackForm');
+	res.render('trackForm');
 });
 
 router.get('/allForms', (req, res) => {
-  res.render('allForms');
+	res.render('allForms');
 });
 
 router.get('/approve', (req, res) => {
-  res.render('approve');
+	res.render('approve');
+});
+
+router.get('/approve/:person/:id', (req, res) => {
+	res.render('approve');
 });
 
 router.get('/reject', (req, res) => {
-  res.render('reject');
+	res.render('reject');
+});
+
+router.get('/reject/:person/:id', (req, res) => {
+	res.render('reject');
 });
 
 router.get('/asb', (req, res) => {
