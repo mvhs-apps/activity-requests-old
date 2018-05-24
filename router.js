@@ -91,7 +91,7 @@ router.post('/submit_form', (req, res) => {
         formObject.id_num + '/cafeteria\'><p style="font-size: 25px; color: black">Reject</p></a></button></center>' + '</div></center>',
       })
       : Promise.resolve();
-  let gymEmail = (formObject.campus.gym === true && formObject.dates !== null && new Date(formObject.dates[0].from).getHours() > 7 && new Date(formObject.dates[0].from).getHours() < 15 )
+  let gymEmail = (formObject.campus.gym === true && formObject.dates.length !== 0 && new Date(formObject.dates[0].from).getHours() > 7 && new Date(formObject.dates[0].from).getHours() < 15 )
       ? mailer.sendMail({
         recipient: 'tami.kittle@mvla.net',
         subject: 'A student is requesting your approval for use of the Gym/fields during school hours',
@@ -103,7 +103,7 @@ router.post('/submit_form', (req, res) => {
         formObject.id_num + '/gym\'><p style="font-size: 25px; color: black">Reject</p></a></button></center>' + '</div></center>',
       })
       : Promise.resolve();
-  let gymEmailAfterHours = (formObject.campus.gym === true && formObject.dates !== null && (new Date(formObject.dates[0].from).getHours() < 7 || new Date(formObject.dates[0].from).getHours() > 15 ))
+  let gymEmailAfterHours = (formObject.campus.gym === true && formObject.dates.length !== 0 && (new Date(formObject.dates[0].from).getHours() < 7 || new Date(formObject.dates[0].from).getHours() > 15 ))
     ? mailer.sendMail({
       recipient: 'shelley.smith@mvla.net',
       subject: 'A student is requesting your approval for use of the Gym/fields after school hours',
