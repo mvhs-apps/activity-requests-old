@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Roboto:400,700|Material+Icons">
+		<meta content="width=device-width, initial-scale=1" name="viewport">
+
+		<title>All Approvals</title>
+
+		<script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+		<script>
+		  // Initialize Firebase
+		  var config = {
+		    apiKey: "AIzaSyDa5U-zlZrhgahLMVz8I_nEi3s5cp9t5jQ",
+		    authDomain: "mvhs-approvals.firebaseapp.com",
+		    databaseURL: "https://mvhs-approvals.firebaseio.com",
+		    projectId: "mvhs-approvals",
+		    storageBucket: "mvhs-approvals.appspot.com",
+		    messagingSenderId: "43618643962"
+		  };
+		  firebase.initializeApp(config);
+		</script>
+
+	</head>
+	<body style="min-height: 100%">
+		<div id="navigation" style="height: 10%">
+			<%- include templates/navbar.ejs %>
+		</div>
+		<link rel="stylesheet" type="text/css" href="/stylesheets/form.css">
+
+		<div style="background-color: rgb(216, 216, 216); padding: 20px; min-height: 90%; display: inline-block; min-width: 100%; position: absolute;">
+			<h1 style="text-align: center">Approval Details</h1>
+			<div id="details"></div>
+		</div>
+		<script type="text/javascript" src="/js/approvalDetails.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	</body>
+</html>

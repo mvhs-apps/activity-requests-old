@@ -31,6 +31,10 @@ router.get('/approve/:person/:id', (req, res) => {
 	res.render('approve');
 });
 
+router.get('/approvalDetails/:person', (req, res) => {
+  res.render('approvalDetails');
+});
+
 router.get('/reject', (req, res) => {
 	res.render('reject');
 });
@@ -74,7 +78,8 @@ router.post('/submit_form', (req, res) => {
     subject: 'A student is requesting your approval',
     messageHTML: '<center><div style="width: 90%; background-color: #f4f4f4"><p style="text-align: center; font-size: 30px;">' + formObject.general.student_name +
     ' has submitted an approval for ' + formObject.general.club_name +
-    '. Please accept or reject the approval below.</p><br /><center><button style="background-color: green; width: 200px; font-size: 15px; height: 100px"><a href=\'https://mvhs-approvals.herokuapp.com/approve/' +
+    '. <br /> You can view more details about the approval <a href=\'https://mvhs-approvals.herokuapp.com/approvalDetails/' + formObject.id_num + '\'>here</a>' +
+    '. <br />Please accept or reject the approval below.</p><br /><center><button style="background-color: green; width: 200px; font-size: 15px; height: 100px"><a href=\'https://mvhs-approvals.herokuapp.com/approve/' +
     formObject.id_num +
     '/clubAdvisor\'><p style="font-size: 25px; color: black">Accept</p></a></button><button style="background-color: red; width: 200px; font-size: 15px; height: 100px"><a href=\'https://mvhs-approvals.herokuapp.com/reject/' +
     formObject.id_num + '/clubAdvisor\'><p style="font-size: 25px; color: black">Reject</p></a></button></center>' + '</div></center>',
@@ -85,7 +90,8 @@ router.post('/submit_form', (req, res) => {
         subject: 'A student is requesting your approval for use of the Cafeteria',
         messageHTML: '<center><div style="width: 90%; background-color: #f4f4f4"><p style="text-align: center; font-size: 30px;">' + formObject.general.student_name +
         ' has submitted an approval for ' + formObject.general.club_name +
-        '. Please accept or reject the approval below.</p><br /><center><button style="background-color: green; width: 200px; font-size: 15px; height: 100px"><a href=\'https://mvhs-approvals.herokuapp.com/approve/' +
+        '. <br /> You can view more details about the approval <a href=\'https://mvhs-approvals.herokuapp.com/approvalDetails/' + formObject.id_num + '\'>here</a>' +
+        '. <br />Please accept or reject the approval below.</p><br /><center><button style="background-color: green; width: 200px; font-size: 15px; height: 100px"><a href=\'https://mvhs-approvals.herokuapp.com/approve/' +
         formObject.id_num +
         '/cafeteria\'><p style="font-size: 25px; color: black">Accept</p></a></button><button style="background-color: red; width: 200px; font-size: 15px; height: 100px"><a href=\'https://mvhs-approvals.herokuapp.com/reject/' +
         formObject.id_num + '/cafeteria\'><p style="font-size: 25px; color: black">Reject</p></a></button></center>' + '</div></center>',
@@ -97,7 +103,8 @@ router.post('/submit_form', (req, res) => {
         subject: 'A student is requesting your approval for use of the Gym/fields during school hours',
         messageHTML: '<center><div style="width: 90%; background-color: #f4f4f4"><p style="text-align: center; font-size: 30px;">' + formObject.general.student_name +
         ' has submitted an approval for ' + formObject.general.club_name +
-        '. Please accept or reject the approval below.</p><br /><center><button style="background-color: green; width: 200px; font-size: 15px; height: 100px"><a href=\'https://mvhs-approvals.herokuapp.com/approve/' +
+        '. <br /> You can view more details about the approval <a href=\'https://mvhs-approvals.herokuapp.com/approvalDetails/' + formObject.id_num + '\'>here</a>' +
+        '. <br />Please accept or reject the approval below.</p><br /><center><button style="background-color: green; width: 200px; font-size: 15px; height: 100px"><a href=\'https://mvhs-approvals.herokuapp.com/approve/' +
         formObject.id_num +
         '/gym\'><p style="font-size: 25px; color: black">Accept</p></a></button><button style="background-color: red; width: 200px; font-size: 15px; height: 100px"><a href=\'https://mvhs-approvals.herokuapp.com/reject/' +
         formObject.id_num + '/gym\'><p style="font-size: 25px; color: black">Reject</p></a></button></center>' + '</div></center>',
@@ -109,7 +116,8 @@ router.post('/submit_form', (req, res) => {
       subject: 'A student is requesting your approval for use of the Gym/fields after school hours',
       messageHTML: '<center><div style="width: 90%; background-color: #f4f4f4"><p style="text-align: center; font-size: 30px;">' + formObject.general.student_name +
       ' has submitted an approval for ' + formObject.general.club_name +
-      '. Please accept or reject the approval below.</p><br /><center><button style="background-color: green; width: 200px; font-size: 15px; height: 100px"><a href=\'https://mvhs-approvals.herokuapp.com/approve/' +
+      '. <br /> You can view more details about the approval <a href=\'https://mvhs-approvals.herokuapp.com/approvalDetails/' + formObject.id_num + '\'>here</a>' +
+      '. <br />Please accept or reject the approval below.</p><br /><center><button style="background-color: green; width: 200px; font-size: 15px; height: 100px"><a href=\'https://mvhs-approvals.herokuapp.com/approve/' +
       formObject.id_num +
       '/gym\'><p style="font-size: 25px; color: black">Accept</p></a></button><button style="background-color: red; width: 200px; font-size: 15px; height: 100px"><a href=\'https://mvhs-approvals.herokuapp.com/reject/' +
       formObject.id_num + '/gym\'><p style="font-size: 25px; color: black">Reject</p></a></button></center>' + '</div></center>',
@@ -121,7 +129,8 @@ router.post('/submit_form', (req, res) => {
         subject: 'A student is requesting your approval for use of the library',
         messageHTML: '<center><div style="width: 90%; background-color: #f4f4f4"><p style="text-align: center; font-size: 30px;">' + formObject.general.student_name +
         ' has submitted an approval for ' + formObject.general.club_name +
-        '. Please accept or reject the approval below.</p><br /><center><button style="background-color: green; width: 200px; font-size: 15px; height: 100px"><a href=\'https://mvhs-approvals.herokuapp.com/approve/' +
+        '. <br /> You can view more details about the approval <a href=\'https://mvhs-approvals.herokuapp.com/approvalDetails/' + formObject.id_num + '\'>here</a>' +
+        '. <br />Please accept or reject the approval below.</p><br /><center><button style="background-color: green; width: 200px; font-size: 15px; height: 100px"><a href=\'https://mvhs-approvals.herokuapp.com/approve/' +
         formObject.id_num +
         '/library\'><p style="font-size: 25px; color: black">Accept</p></a></button><button style="background-color: red; width: 200px; font-size: 15px; height: 100px"><a href=\'https://mvhs-approvals.herokuapp.com/reject/' +
         formObject.id_num + '/library\'><p style="font-size: 25px; color: black">Reject</p></a></button></center>' + '</div></center>',
@@ -134,7 +143,8 @@ router.post('/submit_form', (req, res) => {
         subject: 'A student is requesting your approval for use of the College and Career Center',
         messageHTML: '<center><div style="width: 90%; background-color: #f4f4f4"><p style="text-align: center; font-size: 30px;">' + formObject.general.student_name +
         ' has submitted an approval for ' + formObject.general.club_name +
-        '. Please accept or reject the approval below.</p><br /><center><button style="background-color: green; width: 200px; font-size: 15px; height: 100px"><a href=\'https://mvhs-approvals.herokuapp.com/approve/' +
+        '. <br /> You can view more details about the approval <a href=\'https://mvhs-approvals.herokuapp.com/approvalDetails/' + formObject.id_num + '\'>here</a>' +
+        '. <br />Please accept or reject the approval below.</p><br /><center><button style="background-color: green; width: 200px; font-size: 15px; height: 100px"><a href=\'https://mvhs-approvals.herokuapp.com/approve/' +
         formObject.id_num +
         '/ccc\'><p style="font-size: 25px; color: black">Accept</p></a></button><button style="background-color: red; width: 200px; font-size: 15px; height: 100px"><a href=\'https://mvhs-approvals.herokuapp.com/reject/' +
         formObject.id_num + '/ccc\'><p style="font-size: 25px; color: black">Reject</p></a></button></center>' + '</div></center>',
