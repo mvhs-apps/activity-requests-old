@@ -3,7 +3,15 @@ let express = require('express');
 let router = express.Router();
 const mailer = require('./mailer');
 
-//const generateMail = require('./generateMail'); <- not ready for use
+const CAFETERIA_EMAIL = process.env.CAFETERIA_EMAIL; // tami.kittle@mvla.net
+const GYM_EMAIL = process.env.GYM_EMAIL; // debra.godfrey@mvla.net
+const GYM_AFTER_HOURS = process.env.GYM_AFTER_HOURS; // shelley.smith@mvla.net
+const LIBRARY_EMAIL = process.env.LIBRARY_EMAIL; // susan.lamarche@mvla.net
+const CCC_EMAIL = process.env.CCC_EMAIL; // jaimie.tabuchi@mvla.net
+
+if (!(CAFETERIA_EMAIL && GYM_EMAIL && GYM_AFTER_HOURS && LIBRARY_EMAIL && CCC_EMAIL)) {
+  console.warn('Could not load environment variables for emails');
+}
 
 router.get('/', (req, res) => {
   res.render('index');
@@ -62,13 +70,6 @@ router.post('/email', (req, res) => {
 });
 
 router.post('/submit_form', (req, res) => {
-
-  const CAFETERIA_EMAIL = process.env.CAFETERIA_EMAIL; // tami.kittle@mvla.net
-  const GYM_EMAIL = process.env.GYM_EMAIL; // debra.godfrey@mvla.net
-  const GYM_AFTER_HOURS = process.env.GYM_AFTER_HOURS; // shelley.smith@mvla.net
-  const LIBRARY_EMAIL = process.env.LIBRARY_EMAIL; // susan.lamarche@mvla.net
-  const CCC_EMAIL = process.env.CCC_EMAIL; // jaimie.tabuchi@mvla.net
-
   let formObject = JSON.parse(req.body.form_data);
 
   let studentEmail = mailer.sendMail({
