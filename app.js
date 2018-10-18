@@ -26,9 +26,7 @@ app.use('/', require('./router'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  let err = new Error('Not Found');
-  err.status = 404;
-  res.render('fourofour');
+  res.render('404');
   res.status(400);
   // next(err);
 });
